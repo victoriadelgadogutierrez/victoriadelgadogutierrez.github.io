@@ -1,0 +1,1342 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Victoria Delgado, Mechanical Engineering</title>
+<meta name="description" content="Portfolio of Victoria Delgado, mechanical engineering student at Lehigh University with a minor in Aerospace Engineering.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Victoria Delgado | Mechanical Engineering Portfolio">
+<meta property="og:description" content="Mechanical engineering student at Lehigh University. Rover robotics, wearable sensors, and particle simulation. Seeking summer 2027 internships in mechanical design and spacecraft integration and test.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Victoria Delgado | Mechanical Engineering Portfolio">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Playfair+Display:ital,wght@0,500..800;1,500..800&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme: light;
+  --ground:#FDF0F5;
+  --surface:#FFFFFF;
+  --surface-2:#FCE6EE;
+  --ink:#16224D;
+  --muted:#4E5478;
+  --rule:#F2CCDB;
+  --rule-strong:#D99AB4;
+  --gold:#C7336F;
+  --link:#24408F;
+  --planet:#F8D2E0;
+  --planet-line:#E9A6C0;
+  --star:22,34,77;
+  --star-alpha:.32;
+  --btn-ink:#FFFFFF;
+  --on-accent:#FFFFFF;
+  --glow:rgba(231,110,160,.18);
+  --grid:rgba(22,34,77,.045);
+  --sparkle:#E0609A;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{
+  margin:0;
+  background:var(--ground);
+  background-image:linear-gradient(var(--grid) 1px, transparent 1px),linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size:44px 44px;
+  background-attachment:fixed;
+  color:var(--ink);
+  font-family:"Archivo",system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  font-size:1.0625rem;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+#stars{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.page{position:relative;z-index:1}
+img,svg{max-width:100%}
+a{color:var(--link);text-underline-offset:3px}
+a:focus-visible,button:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{max-width:72rem;margin:0 auto;padding:0 1.5rem}
+
+/* Header */
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.5rem 1.5rem;padding:1.25rem 0}
+.mark{font-weight:700;font-stretch:118%;color:var(--ink);text-decoration:none;font-size:1.05rem;display:inline-flex;align-items:center;gap:.6rem}
+.mark svg{width:22px;height:22px}
+.top nav{display:flex;flex-wrap:wrap;gap:.25rem 1.4rem}
+.top nav a{color:var(--ink);text-decoration:none;font-weight:500;padding:.55rem 0}
+.top nav a:hover{text-decoration:underline;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:6px}
+
+/* Hero */
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:2rem;align-items:center;padding:2.5rem 0 3rem}
+.name{font-stretch:125%;font-weight:800;font-size:clamp(3rem,8.4vw,6.75rem);line-height:.9;letter-spacing:-0.015em;margin:0 0 1.75rem}
+.name span{display:block}
+.name{text-shadow:0 0 40px var(--glow)}
+.name span:last-child::after{content:"✦";color:var(--gold);font-size:.3em;vertical-align:top;margin-left:.2em;font-stretch:100%;text-shadow:none}
+.lede{font-size:clamp(1.2rem,2.1vw,1.45rem);line-height:1.4;font-weight:500;max-width:32ch;margin:0 0 1rem}
+.status{color:var(--muted);max-width:46ch;margin:0 0 2rem}
+.actions{display:flex;flex-wrap:wrap;gap:.75rem}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:.7rem 1.3rem;border-radius:999px;font-weight:600;text-decoration:none;border:2px solid var(--ink);font-family:inherit;font-size:1rem}
+.btn.primary{background:var(--ink);color:var(--btn-ink)}
+.btn.primary:hover{background:transparent;color:var(--ink)}
+.btn.secondary{color:var(--ink);background:transparent}
+.btn.secondary:hover{background:var(--ink);color:var(--btn-ink)}
+
+.orbit{width:100%;height:auto;overflow:visible}
+.orbit .planet{fill:var(--planet);stroke:var(--link);stroke-width:2}
+.orbit .lat{fill:none;stroke:var(--planet-line);stroke-width:1.2}
+.orbit .path-back{fill:none;stroke:var(--rule-strong);stroke-width:1.4;stroke-dasharray:4 7}
+.orbit .path-front{fill:none;stroke:var(--muted);stroke-width:1.6;stroke-dasharray:4 7}
+.orbit .moon{fill:var(--surface-2);stroke:var(--rule-strong);stroke-width:1.4}
+.orbit .sat-body{fill:var(--ink)}
+.orbit .sat-panel{fill:var(--gold)}
+.orbit text{fill:var(--muted);font-family:inherit;font-size:13px}
+
+/* Sections */
+section{padding:4.5rem 0}
+.section-head{display:grid;grid-template-columns:15rem 1fr;gap:2.5rem;align-items:end;margin-bottom:2rem}
+h2{font-stretch:125%;font-weight:700;font-size:clamp(1.9rem,3.6vw,2.6rem);line-height:1;margin:0;letter-spacing:-0.01em}
+.section-head p{margin:0;color:var(--muted);max-width:58ch}
+
+/* Mission */
+.mission{position:relative;box-shadow:0 0 0 6px var(--glow);background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:2.5rem;display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
+.patch{width:150px;height:150px}
+.patch .ring{fill:var(--surface-2);stroke:var(--gold);stroke-width:3}
+.patch .inner{fill:none;stroke:var(--rule-strong);stroke-width:1.2}
+.patch text{fill:var(--ink);font-family:inherit;font-size:11.5px;font-weight:700;font-stretch:118%;letter-spacing:.12em}
+.patch .star{fill:var(--gold)}
+.patch .arc{fill:none;stroke:var(--link);stroke-width:2;stroke-linecap:round}
+.mission h2{font-size:1rem;font-stretch:100%;font-weight:600;color:var(--muted);letter-spacing:0;margin-bottom:.6rem}
+.mission .goal{font-stretch:118%;font-weight:700;font-size:clamp(1.5rem,3vw,2.15rem);line-height:1.15;margin:0 0 1.75rem;max-width:26ch}
+.flight{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;position:relative}
+.flight::before{content:"";position:absolute;left:8px;right:8px;top:8px;border-top:2px dotted var(--rule-strong)}
+.flight li{position:relative;padding-top:1.75rem}
+.flight li::before{content:"";position:absolute;left:0;top:0;width:18px;height:18px;border-radius:50%;background:var(--surface);border:2px solid var(--link)}
+.flight li.target::before{background:var(--gold);border-color:var(--gold)}
+.flight strong{display:block;font-stretch:112%}
+.flight span{color:var(--muted);font-size:.95rem}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:3rem;align-items:start}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.photos figure{margin:0}
+.photos .main{grid-column:1 / -1}
+.porthole{aspect-ratio:1/1;border-radius:50%;border:6px solid var(--surface);box-shadow:0 0 0 2px var(--rule-strong),0 0 0 9px var(--surface-2),0 0 0 11px var(--rule);display:flex;align-items:center;justify-content:center;text-align:center;padding:1.25rem;background:var(--surface-2);color:var(--muted);font-size:.95rem;overflow:hidden;margin:11px}
+.porthole img{width:100%;height:100%;object-fit:cover;display:block}
+.photos .main .porthole{max-width:20rem;margin:11px auto}
+.photos figcaption{text-align:center}
+.about-text p{max-width:60ch;margin:0 0 1rem}
+.about-text p:last-child{margin-bottom:0}
+
+/* Tabs */
+.tablist{display:flex;gap:.5rem;overflow-x:auto;padding:.25rem .25rem 1rem;margin:0 -.25rem;scrollbar-width:thin}
+.tab{flex:none;min-height:46px;padding:.6rem 1.15rem;border-radius:999px;border:1.5px solid var(--rule-strong);background:var(--surface);color:var(--ink);font-family:inherit;font-size:.98rem;font-weight:600;cursor:pointer}
+.tab:hover{border-color:var(--ink)}
+.tab[aria-selected="true"]{background:var(--gold);color:var(--on-accent);border-color:var(--gold);box-shadow:0 0 0 4px var(--glow)}
+.panel{position:relative;background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:2.5rem;box-shadow:0 0 0 6px var(--glow)}
+.panel::before,.mission::before{content:"";position:absolute;inset:10px;pointer-events:none;background:linear-gradient(var(--gold),var(--gold)) left top/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) left top/2px 16px no-repeat,linear-gradient(var(--gold),var(--gold)) right top/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) right top/2px 16px no-repeat,linear-gradient(var(--gold),var(--gold)) left bottom/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) left bottom/2px 16px no-repeat,linear-gradient(var(--gold),var(--gold)) right bottom/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) right bottom/2px 16px no-repeat}
+.panel[hidden]{display:none}
+.panel-head{border-bottom:1px solid var(--rule);padding-bottom:1.5rem;margin-bottom:2rem}
+.panel-head h3{font-stretch:118%;font-weight:700;font-size:clamp(1.45rem,2.6vw,1.9rem);line-height:1.1;margin:0 0 .5rem}
+.panel-head p{margin:0;color:var(--muted)}
+.panel-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:2.5rem}
+.story h4{font-stretch:112%;font-weight:700;font-size:1.3rem;line-height:1.2;margin:0 0 1rem}
+.story p{max-width:62ch;margin:0 0 1rem}
+.story p:last-child{margin-bottom:0}
+.story .lesson{font-size:1.12rem;font-weight:500}
+.side{display:grid;gap:1.5rem;align-content:start}
+.side figure{margin:0}
+.side dl{margin:0;display:grid;gap:.8rem;font-size:.95rem}
+.side dt{color:var(--muted);font-size:.85rem}
+.side dd{margin:0;font-weight:500}
+.slot{display:flex;align-items:center;justify-content:center;min-height:12rem;padding:1.5rem;border:1.5px dashed var(--rule-strong);border-radius:14px;background:var(--surface-2);color:var(--muted);text-align:center;font-size:.95rem}
+figcaption{color:var(--muted);font-size:.875rem;margin-top:.6rem}
+.more-list{list-style:none;margin:0;padding:0;display:grid;gap:1.5rem}
+.more-list li{padding-bottom:1.5rem;border-bottom:1px solid var(--rule)}
+.more-list li:last-child{border-bottom:0;padding-bottom:0}
+.more-list strong{display:block;font-stretch:112%;font-size:1.1rem}
+.more-list .when{color:var(--muted);font-size:.9rem;display:block;margin-bottom:.4rem}
+.more-list p{margin:0;max-width:62ch}
+
+.arm{width:100%;height:auto;background:var(--surface-2);border-radius:14px}
+.arm .rail{fill:none;stroke:var(--ink);stroke-width:2}
+.arm .carriage{fill:var(--ink)}
+.arm .link{stroke:var(--ink);stroke-width:10;stroke-linecap:round;fill:none}
+.arm .claw{stroke:var(--gold);stroke-width:6;stroke-linecap:round;stroke-linejoin:round;fill:none}
+.arm .joint{fill:var(--surface);stroke:var(--gold);stroke-width:3.5}
+.arm .leader{stroke:var(--muted);stroke-width:1.1}
+.arm text{fill:var(--muted);font-family:inherit;font-size:14px}
+
+.chart{background:var(--surface-2);border-radius:14px;padding:1rem;overflow-x:auto}
+.chart svg{display:block;min-width:26rem;width:100%;height:auto}
+.chart .axis{stroke:var(--rule-strong);stroke-width:1}
+.chart .grid{stroke:var(--rule);stroke-width:1}
+.chart .curve{fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.chart .c1{stroke:var(--link)}
+.chart .c2{stroke:var(--gold);stroke-dasharray:9 6}
+.chart .c3{stroke:var(--ink);stroke-dasharray:2 5}
+.chart text{fill:var(--muted);font-family:inherit;font-size:13px}
+.chart .lbl{fill:var(--ink);font-weight:600}
+
+/* Recognition */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
+.cols h3{font-stretch:112%;font-size:1.15rem;margin:0 0 .75rem}
+.cols ul{list-style:none;margin:0;padding:0}
+.cols li{padding:.65rem 0;border-top:1px solid var(--rule)}
+.cols li:last-child{border-bottom:1px solid var(--rule)}
+.cols li span{display:block;color:var(--muted);font-size:.9rem}
+
+/* Contact */
+.contact-grid{display:grid;grid-template-columns:15rem 1fr;gap:2.5rem}
+.contact p{max-width:52ch;margin:0 0 1.5rem;font-size:1.15rem}
+.contact ul{list-style:none;margin:0;padding:0;display:grid;gap:.5rem}
+.contact li{font-weight:500}
+.contact li span{color:var(--muted);font-weight:400;display:inline-block;min-width:6.5rem}
+footer{padding:2rem 0 3rem;color:var(--muted);font-size:.875rem;border-top:1px solid var(--rule)}
+
+@media (max-width: 900px){
+  .hero{grid-template-columns:1fr;padding-top:1rem}
+  .hero .orbit-wrap{max-width:30rem}
+  .about-grid,.panel-grid{grid-template-columns:1fr}
+  .photos{max-width:30rem}
+}
+@media (max-width: 760px){
+  .section-head,.contact-grid{grid-template-columns:1fr;gap:1rem}
+  .mission{grid-template-columns:1fr;padding:1.75rem;gap:1.5rem}
+  .patch{width:110px;height:110px}
+  .flight{grid-template-columns:1fr;gap:1rem}
+  .flight::before{left:8px;right:auto;top:8px;bottom:8px;border-top:0;border-left:2px dotted var(--rule-strong)}
+  .flight li{padding:0 0 0 2rem}
+  .cols{grid-template-columns:1fr}
+  .panel{padding:1.5rem}
+  section{padding:3.25rem 0}
+}
+
+/* Photos and galleries */
+.shot{margin:0}
+.zoom{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:14px;overflow:hidden}
+.zoom img{display:block;width:100%;height:auto;border-radius:14px;background:#fff}
+.shot.fit .zoom img{aspect-ratio:4/3;object-fit:contain}
+.shot.cover .zoom img{aspect-ratio:4/3;object-fit:cover}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(13rem,1fr));gap:1.25rem;margin-top:2.25rem;padding-top:2rem;border-top:1px solid var(--rule)}
+.gallery h4{grid-column:1/-1;margin:0;font-stretch:112%;font-size:1.1rem}
+.wide-photo{grid-column:1 / -1;margin:0}
+.wide-photo img{display:block;width:100%;height:auto;border-radius:18px;border:6px solid var(--surface);box-shadow:0 0 0 2px var(--rule-strong)}
+dialog.lightbox{border:0;padding:0;background:transparent;max-width:min(92vw,70rem);max-height:92vh}
+dialog.lightbox::backdrop{background:rgba(4,8,18,.82)}
+dialog.lightbox img{display:block;max-width:100%;max-height:80vh;margin:0 auto;border-radius:12px;background:#fff}
+dialog.lightbox p{color:#E9EDF6;text-align:center;margin:.75rem 0 0}
+dialog.lightbox .close{position:absolute;top:.5rem;right:.5rem;min-height:44px;padding:.5rem 1rem;border-radius:999px;border:0;background:#E9EDF6;color:#060A15;font-family:inherit;font-weight:600;cursor:pointer}
+/* v5 additions */
+.chip{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem 1rem;border-radius:999px;border:1.5px solid var(--gold);background:var(--surface);font-size:.92rem;font-weight:600;margin:0 0 1.5rem}
+.chip .dot{width:9px;height:9px;border-radius:50%;background:var(--gold);animation:ping 2.4s ease-out infinite}
+@keyframes ping{0%{box-shadow:0 0 0 0 var(--gold)}70%{box-shadow:0 0 0 9px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion: reduce){.chip .dot{animation:none}}
+.hud{position:relative;background:var(--surface);border:1px solid var(--rule);border-radius:20px;box-shadow:0 0 0 6px var(--glow)}
+.hud::before{content:"";position:absolute;inset:10px;pointer-events:none;background:linear-gradient(var(--gold),var(--gold)) left top/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) left top/2px 16px no-repeat,linear-gradient(var(--gold),var(--gold)) right top/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) right top/2px 16px no-repeat,linear-gradient(var(--gold),var(--gold)) left bottom/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) left bottom/2px 16px no-repeat,linear-gradient(var(--gold),var(--gold)) right bottom/16px 2px no-repeat,linear-gradient(var(--gold),var(--gold)) right bottom/2px 16px no-repeat}
+.patch{width:160px;height:160px}
+.patch .ring{fill:var(--surface-2);stroke:var(--gold);stroke-width:3}
+.patch .inner{fill:var(--surface);stroke:var(--rule-strong);stroke-width:1.2}
+.patch .band{fill:var(--ink);font-family:inherit;font-size:11px;font-weight:700;font-stretch:100%;letter-spacing:.12em}
+.patch .p-planet{fill:var(--link)}
+.patch .p-orbit{fill:none;stroke:var(--gold);stroke-width:2}
+.patch .p-star{fill:var(--gold)}
+.edu-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.25fr);gap:2.5rem;align-items:start}
+.edu-card{padding:2.25rem}
+.edu-card h3{font-stretch:118%;font-size:1.5rem;line-height:1.15;margin:0 0 .25rem}
+.edu-card .where{color:var(--muted);margin:0 0 1.5rem}
+.edu-card dl{margin:0;display:grid;gap:.9rem}
+.edu-card dt{color:var(--muted);font-size:.85rem}
+.edu-card dd{margin:0;font-weight:500}
+.log-wrap h3{font-stretch:112%;font-size:1.15rem;margin:0 0 1.25rem}
+.log{list-style:none;margin:0;padding:0 0 0 1.9rem;position:relative}
+.log::before{content:"";position:absolute;left:7px;top:8px;bottom:8px;border-left:2px dotted var(--rule-strong)}
+.log li{position:relative;padding-bottom:1.35rem}
+.log li:last-child{padding-bottom:0}
+.log li::before{content:"";position:absolute;left:-1.9rem;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--surface);border:2px solid var(--gold)}
+.log li.now::before{background:var(--gold);box-shadow:0 0 0 5px var(--glow)}
+.log .when{display:block;color:var(--muted);font-size:.85rem;font-weight:600}
+.log strong{display:block;font-stretch:108%}
+.log .org{color:var(--muted);font-size:.95rem}
+.pubs{list-style:none;margin:0;padding:0;display:grid;gap:1rem}
+.pubs li{padding:1.6rem 1.75rem;display:grid;grid-template-columns:10rem 1fr;gap:1.5rem}
+.pubs .kind{display:block;font-size:.85rem;font-weight:700;color:var(--gold)}
+.pubs .status{display:block;color:var(--muted);font-size:.85rem;font-weight:500;margin-top:.2rem}
+.pubs .title{font-weight:600;margin:0 0 .35rem;max-width:62ch}
+.pubs .meta{color:var(--muted);margin:0;font-size:.95rem;max-width:62ch}
+@media (max-width: 900px){.edu-grid{grid-template-columns:1fr}}
+@media (max-width: 760px){.pubs li{grid-template-columns:1fr;gap:.5rem;padding:1.4rem}.edu-card{padding:1.6rem}.patch{width:120px;height:120px}}
+.section-head{display:block;margin-bottom:2rem}
+.section-head p{margin-top:.6rem}
+.name,h2,.panel-head h3,.story h4,.mission .goal,.edu-card h3,.cols h3,.log-wrap h3,.gallery h4,.now h3{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-stretch:100%;letter-spacing:0}
+.name{font-weight:700;line-height:.95}
+h2{font-weight:600}
+.mission h2{font-family:inherit;font-size:1rem;font-weight:600}
+.story h4,.panel-head h3,.edu-card h3{font-weight:600}
+.hobbies{margin-top:2rem;padding-top:1.5rem;border-top:1px solid var(--rule)}
+.hobbies h3{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-weight:600;font-size:1.3rem;margin:0 0 .5rem}
+.hobbies > p{margin:0 0 1.1rem}
+.hobby-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;max-width:30rem}
+.hobby-list li{display:flex;align-items:center;gap:.75rem;background:var(--surface);border:1px solid var(--rule);border-radius:14px;padding:.8rem 1rem;font-weight:600}
+.hobby-list svg{flex:none;width:26px;height:26px;fill:none;stroke:var(--gold);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:480px){.hobby-list{grid-template-columns:1fr}}
+.video-card{display:flex;align-items:center;gap:1rem;padding:1rem 1.1rem;border-radius:14px;background:var(--ink);color:var(--btn-ink);text-decoration:none;min-height:44px;transition:box-shadow .2s}
+.video-card:hover{box-shadow:0 0 0 5px var(--glow)}
+.video-card .play{flex:none;width:44px;height:44px;border-radius:50%;background:var(--gold);display:grid;place-items:center}
+.video-card .play svg{width:18px;height:18px;fill:#FFFFFF;margin-left:3px}
+.video-card strong{display:block;line-height:1.3}
+.video-card .sub{display:block;font-size:.85rem;opacity:.85}
+.edu-card .cert{margin-top:1.5rem;max-width:15rem}
+.edu-card .cert figcaption{margin-top:.4rem}
+
+.portrait{padding:14px;max-width:22rem;margin:0 auto}
+.portrait img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px}
+.more-photo{max-width:20rem;margin-top:1rem}
+.shot.cover .zoom img[src*="symposium"]{aspect-ratio:auto}
+
+/* v7 */
+.hero{position:relative;overflow:clip}
+.shooting-star{position:absolute;top:12%;left:72%;width:130px;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--gold),transparent);opacity:0;transform:rotate(-28deg);animation:shoot 11s ease-in 2s infinite;pointer-events:none}
+@keyframes shoot{0%{opacity:0;transform:rotate(-28deg) translateX(0)}2%{opacity:1}9%{opacity:0;transform:rotate(-28deg) translateX(-360px)}100%{opacity:0;transform:rotate(-28deg) translateX(-360px)}}
+@media (prefers-reduced-motion: reduce){.shooting-star{display:none}}
+.telemetry{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:var(--ink);color:#FFFFFF;border-radius:18px;padding:1.1rem .5rem;margin:0 0 1rem;box-shadow:0 0 0 6px var(--glow)}
+.telemetry>div{padding:.2rem 1.25rem;border-left:1px solid rgba(255,255,255,.16)}
+.telemetry>div:first-child{border-left:0}
+.t-label{display:block;color:#F5A3C5;font-size:.8rem;font-weight:600}
+.t-value{display:block;font-weight:600;line-height:1.35}
+.constellation{display:flex;justify-content:center;padding-top:1.5rem}
+.constellation svg{width:220px;height:40px}
+.constellation polyline{fill:none;stroke:var(--rule-strong);stroke-width:1}
+.constellation circle,.constellation .spark{fill:var(--gold)}
+section{padding:3rem 0 4rem}
+.dossier{padding:1.75rem 2rem 2rem}
+.dossier-bar{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--rule);padding-bottom:.9rem;margin-bottom:1.75rem}
+.dossier-title{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-weight:600;font-size:1.2rem}
+.dossier-id{display:inline-flex;align-items:center;gap:.5rem;color:var(--muted);font-size:.88rem;font-weight:600}
+.dossier-id .dot{width:8px;height:8px;border-radius:50%;background:var(--gold)}
+.dossier-grid{display:grid;grid-template-columns:17rem minmax(0,1fr);gap:2.25rem;align-items:start}
+.badge{position:relative;background:var(--surface);border:1px solid var(--rule);border-radius:18px;padding:0 1.25rem 1.25rem;text-align:center;box-shadow:0 14px 34px rgba(22,34,77,.10);overflow:hidden}
+.badge-head{position:relative;display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--ink);color:#FFFFFF;margin:0 -1.25rem 1.1rem;padding:1.5rem 1rem .8rem;font-weight:600;font-size:.92rem}
+.badge-head svg{width:18px;height:18px}
+.badge-slot{position:absolute;top:.6rem;left:50%;width:46px;height:7px;margin-left:-23px;border-radius:4px;background:rgba(255,255,255,.35)}
+.badge-photo{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px;border:3px solid var(--gold)}
+.badge-name{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-weight:700;font-size:1.4rem;line-height:1.2;margin:1rem 0 .2rem}
+.badge-role{font-weight:600;margin:0 0 .3rem}
+.badge-meta{color:var(--muted);font-size:.9rem;line-height:1.45;margin:0}
+.badge-code{display:block;width:72%;height:22px;margin:1rem auto 0;fill:var(--ink)}
+.ground-log{margin:0}
+.log-frame{position:relative;border-radius:14px;overflow:hidden}
+.log-frame img{display:block;width:100%;height:auto}
+.log-frame::after{content:"";position:absolute;inset:12px;pointer-events:none;background:linear-gradient(#fff,#fff) left top/20px 2px no-repeat,linear-gradient(#fff,#fff) left top/2px 20px no-repeat,linear-gradient(#fff,#fff) right top/20px 2px no-repeat,linear-gradient(#fff,#fff) right top/2px 20px no-repeat,linear-gradient(#fff,#fff) left bottom/20px 2px no-repeat,linear-gradient(#fff,#fff) left bottom/2px 20px no-repeat,linear-gradient(#fff,#fff) right bottom/20px 2px no-repeat,linear-gradient(#fff,#fff) right bottom/2px 20px no-repeat}
+.log-tag{position:absolute;background:rgba(22,34,77,.82);color:#FFFFFF;font-size:.78rem;font-weight:600;padding:.3rem .65rem;border-radius:999px}
+.log-tl{top:20px;left:20px}
+.log-tr{top:20px;right:20px}
+.status{max-width:54ch}
+.hero{grid-template-columns:1.25fr 1fr}
+.actions .btn{padding:.6rem 1.1rem;font-size:.95rem}
+#about .hobby-list{grid-template-columns:repeat(4,minmax(0,1fr));max-width:none}
+@media (max-width: 900px){.hero{grid-template-columns:1fr}#about .hobby-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width: 640px){.log-tr{display:none}}
+.ground-log figcaption{margin-top:.7rem}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem 1.75rem;margin:1.5rem 0 0;padding-top:1.25rem;border-top:1px solid var(--rule)}
+.facts dt{color:var(--muted);font-size:.82rem}
+.facts dd{margin:0;font-weight:600}
+.about-blocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.25rem;margin-top:1.75rem}
+.ablock{background:var(--surface);border:1px solid var(--rule);border-radius:16px;padding:1.4rem 1.6rem}
+.ablock h3{font-family:"Playfair Display",Georgia,"Times New Roman",serif;font-weight:600;font-size:1.2rem;margin:0 0 .5rem}
+.ablock p{margin:0;line-height:1.65}
+#about .hobbies{margin-top:1.75rem;padding:1.5rem 1.6rem;border:1px solid var(--rule);border-radius:16px;background:var(--surface)}
+#about .hobbies > p{max-width:70ch}
+.to-top-wrap{position:fixed;right:0;bottom:0;padding:0 1.25rem calc(1.25rem + env(safe-area-inset-bottom,0px));z-index:20;pointer-events:none}
+.to-top{pointer-events:auto;display:grid;place-items:center;width:48px;height:48px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 5px var(--glow);opacity:0;transform:translateY(10px);transition:opacity .25s,transform .25s}
+.to-top.show{opacity:1;transform:none}
+.to-top svg{width:22px;height:22px;fill:#F5A3C5}
+/* v8 motion */
+.orbit-wrap{animation:float 7s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.twinkle{position:absolute;width:14px;height:14px;pointer-events:none;animation:twinkle 3.4s ease-in-out infinite}
+.twinkle svg{display:block;width:100%;height:100%;fill:var(--gold)}
+@keyframes twinkle{0%,100%{opacity:.15;transform:scale(.55) rotate(0deg)}50%{opacity:1;transform:scale(1) rotate(45deg)}}
+.anim .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+.anim .reveal.in{opacity:1;transform:none}
+.anim .ablock:nth-child(2),.anim .pubs li:nth-child(2),.anim .cols>div:nth-child(2){transition-delay:.12s}
+.anim .ablock:nth-child(3),.anim .pubs li:nth-child(3){transition-delay:.2s}
+.anim .ablock:nth-child(4),.anim .pubs li:nth-child(4){transition-delay:.28s}
+.anim .constellation polyline{stroke-dasharray:260;stroke-dashoffset:260;transition:stroke-dashoffset 1.6s ease}
+.anim .constellation.in polyline{stroke-dashoffset:0}
+.anim .constellation circle,.anim .constellation .spark{transform-box:fill-box;transform-origin:center;transform:scale(0);transition:transform .5s ease 1s}
+.anim .constellation.in circle,.anim .constellation.in .spark{transform:scale(1)}
+.anim .panel:not([hidden]){animation:panelIn .45s ease}
+@keyframes panelIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.badge{transition:transform .35s ease,box-shadow .35s ease}
+.badge:hover{transform:translateY(-5px) rotate(-1.2deg);box-shadow:0 22px 44px rgba(22,34,77,.16)}
+.telemetry .t-value{transition:color .3s}
+
+.sparkle-dot{position:fixed;pointer-events:none;z-index:30;animation:sparkFade .7s ease-out forwards}
+.sparkle-dot svg{display:block;width:100%;height:100%}
+@keyframes sparkFade{0%{opacity:.9;transform:translate(-50%,-50%) scale(1) rotate(0deg)}100%{opacity:0;transform:translate(-50%,calc(-50% + 16px)) scale(.3) rotate(90deg)}}
+/* v10 glow buttons and footer */
+.btn{box-shadow:0 0 0 4px var(--glow),0 6px 18px rgba(199,51,111,.16);transition:box-shadow .25s,background .25s,color .25s}
+.btn:hover{box-shadow:0 0 0 6px var(--glow),0 10px 26px rgba(199,51,111,.28)}
+.tab{box-shadow:0 4px 14px rgba(199,51,111,.10);transition:box-shadow .25s,border-color .25s}
+.tab:hover{box-shadow:0 0 0 4px var(--glow),0 6px 18px rgba(199,51,111,.18)}
+.video-card{box-shadow:0 0 0 4px var(--glow),0 8px 22px rgba(22,34,77,.18)}
+footer{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:.75rem 1.5rem}
+footer .signoff{display:inline-flex;align-items:center;gap:.55rem;font-weight:600;color:var(--ink)}
+footer .signoff svg{width:22px;height:22px;fill:var(--gold)}
+footer .signoff svg rect:nth-child(2){fill:var(--ink)}
+.btn,.btn:hover{box-shadow:none}
+.pubs{gap:1.5rem}
+.pubs li{padding:1.5rem 1.75rem;grid-template-columns:11rem 1fr;gap:1.75rem;align-items:start;box-shadow:none}
+.pubs li p{margin:0}
+.pubs .title{margin-bottom:.4rem}
+.pubs .status{margin-top:.3rem;line-height:1.45}
+@media (max-width: 760px){.pubs li{grid-template-columns:1fr;gap:.6rem;padding:1.4rem 1.5rem}}
+.pubs li{grid-template-columns:1fr;gap:.6rem}
+.pubs li>div:first-child{display:flex;flex-wrap:wrap;align-items:center;gap:.4rem .75rem}
+.pubs .kind{display:inline-block;padding:.2rem .7rem;border-radius:999px;background:var(--surface-2);border:1px solid var(--rule)}
+.pubs .status{display:inline;margin:0}
+.t-sub{display:block;color:#F5A3C5;font-size:.82rem;font-weight:600;margin-top:.1rem}
+.lede{font-size:clamp(1.45rem,2.6vw,1.95rem);font-weight:600;line-height:1.3;max-width:none;margin:0 0 1.4rem}
+.rotator{display:inline-block;min-width:4.7em;color:var(--gold);border-bottom:3px solid var(--rule-strong);line-height:1.15}
+.caret{display:inline-block;width:2px;height:.9em;background:var(--gold);margin-left:2px;vertical-align:-.1em;animation:caret 1s steps(2) infinite}
+@keyframes caret{50%{opacity:0}}
+.creds{list-style:none;margin:0 0 2rem;padding:0;display:flex;flex-wrap:wrap;gap:.55rem;max-width:41rem}
+.creds li{display:inline-flex;align-items:center;gap:.45rem;padding:.42rem .9rem;border-radius:999px;background:var(--surface);border:1px solid var(--rule);font-size:.92rem;font-weight:600}
+.creds svg{flex:none;width:16px;height:16px;fill:none;stroke:var(--gold);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (prefers-reduced-motion: reduce){.caret{display:none}}
+.badge-id{margin:.45rem 0 0;font-size:.78rem;font-weight:700;letter-spacing:.2em;color:var(--muted)}
+.creds{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.1rem 2.25rem;max-width:38rem;padding:1.1rem 0;border-top:1px solid var(--rule-strong);border-bottom:1px solid var(--rule-strong)}
+.creds li{display:flex;align-items:flex-start;gap:.7rem;padding:0;border:0;border-radius:0;background:none;font-size:1rem;font-weight:600;line-height:1.35}
+.creds li small{display:block;color:var(--muted);font-size:.78rem;font-weight:600;margin-bottom:.15rem}
+.creds svg{width:18px;height:18px;margin-top:.15rem}
+@media (max-width: 420px){.creds{grid-template-columns:1fr;gap:.9rem}}
+/* sticky frosted header */
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 84px)}
+body{overflow-x:clip}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:25}
+.top::before{content:"";position:absolute;top:0;bottom:0;left:calc(50% - 50vw);right:calc(50% - 50vw);z-index:-1;background:rgba(253,240,245,.76);-webkit-backdrop-filter:blur(14px) saturate(140%);backdrop-filter:blur(14px) saturate(140%);border-bottom:1px solid transparent;transition:border-color .25s,box-shadow .25s}
+.top.scrolled::before{border-bottom-color:var(--rule);box-shadow:0 6px 20px rgba(22,34,77,.07)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:26;background:rgba(253,240,245,.76);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
+@media (max-width: 640px){.top{padding:.7rem 0;gap:.35rem}.top nav{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:1.1rem;scrollbar-width:none}.top nav::-webkit-scrollbar{display:none}.top nav a{flex:none}}
+@media (prefers-reduced-motion: reduce){.orbit-wrap,.twinkle{animation:none}.twinkle{opacity:.6}.badge,.badge:hover{transition:none;transform:none}}
+@media (max-width: 900px){.dossier-grid{grid-template-columns:1fr}.badge{max-width:19rem;margin:0 auto}.telemetry{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:.9rem}.telemetry>div:nth-child(3){border-left:0}}
+@media (max-width: 640px){.about-blocks,.facts{grid-template-columns:1fr}.dossier{padding:1.25rem}.telemetry>div{padding:.2rem .9rem}}
+
+/* MET gallery layout */
+#panel-metlab .met-gallery{display:block}
+.met-gallery h4{margin:0 0 1rem}
+.met-gallery h4:not(:first-child){margin-top:2.25rem}
+.met-photos{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.9fr);gap:1.25rem}
+.met-photos .zoom img{width:100%;height:22rem;object-fit:cover;aspect-ratio:auto}
+.met-poster .zoom img{object-position:center 30%}
+.met-group .zoom img{object-position:center 35%}
+.met-plots{display:grid;gap:1.75rem}
+.met-plot .zoom{background:#FFFFFF;border:1px solid var(--rule);border-radius:14px;padding:1rem}
+.met-plot .zoom img{border-radius:6px}
+.met-plot-narrow{max-width:46rem;margin:0 auto;width:100%}
+@media (max-width: 760px){.met-photos{grid-template-columns:1fr}.met-photos .zoom img{height:16rem}.met-plot .zoom{padding:.5rem}}
+
+figcaption{text-align:center;margin-left:auto;margin-right:auto}
+.section-head{margin-bottom:1.75rem}
+
+.skill-group{padding:.95rem 0;border-top:1px solid var(--rule)}
+.skill-group:last-child{border-bottom:1px solid var(--rule)}
+.skill-group h4{font-family:inherit;font-size:.85rem;font-weight:600;color:var(--muted);margin:0 0 .6rem}
+.cols .tags{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:.45rem}
+.cols .tags li{padding:.3rem .65rem;border:1px solid var(--rule);border-radius:6px;background:var(--surface);font-size:.92rem;font-weight:500;line-height:1.3}
+.cols .tags li span{display:inline;margin-left:.3rem;color:var(--muted);font-size:.76rem;font-weight:600}
+
+.panel-head h3{margin-bottom:.35rem}
+.panel-head .ph-role{color:var(--gold);font-weight:700;font-size:1.05rem;margin:0 0 .9rem}
+.ph-meta{display:flex;flex-wrap:wrap;gap:.75rem 2.25rem;margin:0}
+.ph-meta div{min-width:0}
+.ph-meta dt{font-size:.76rem;font-weight:600;color:var(--muted);margin-bottom:.1rem}
+.ph-meta dd{margin:0;font-size:.95rem;font-weight:600;color:var(--ink)}
+
+.panel-head .ph-role{display:flex;flex-wrap:wrap;align-items:baseline;gap:.25rem .9rem;color:var(--ink);margin:0 0 .35rem}
+.ph-role strong{color:var(--gold);font-weight:700;font-size:1.05rem}
+.ph-date{color:var(--muted);font-weight:600;font-size:.95rem;padding-left:.9rem;border-left:2px solid var(--rule-strong);line-height:1.1}
+.panel-head .ph-people{margin:0;color:var(--muted);font-size:.95rem}
+
+/* v12 recruiter upgrades */
+.top nav a.nav-resume{display:inline-flex;align-items:center;line-height:1;padding:.6rem 1rem;border-radius:999px;background:var(--ink);color:#FFFFFF;text-decoration:none}
+.top nav a.nav-resume:hover{background:var(--gold);color:#FFFFFF;text-decoration:none}
+.contact{border-top:0}
+.cta{position:relative;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:2.5rem;align-items:center;padding:2.75rem;border-radius:22px;color:#FFFFFF;background:radial-gradient(circle,rgba(255,255,255,.18) 1px,transparent 1.6px) 0 0/38px 38px,radial-gradient(circle,rgba(245,163,197,.45) 1px,transparent 1.8px) 19px 19px/76px 76px,var(--ink)}
+.cta h2{color:#FFFFFF;margin:0 0 .9rem}
+.contact .cta p{color:rgba(255,255,255,.86);font-size:1.08rem;margin:0 0 .75rem;max-width:46ch}
+.contact .cta p.cta-meta{color:#F5A3C5;font-size:.95rem;font-weight:600;margin:0}
+.cta-actions{display:grid;gap:.75rem}
+.cta-btn{display:flex;align-items:center;gap:.7rem;min-height:48px;padding:.8rem 1.1rem;border-radius:12px;border:1px solid rgba(255,255,255,.28);color:#FFFFFF;text-decoration:none;font-weight:600;transition:background .2s,border-color .2s;overflow-wrap:anywhere}
+.cta-btn:hover{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.55)}
+.cta-btn.primary{background:#F5A3C5;color:#16224D;border-color:transparent}
+.cta-btn.primary:hover{background:#FFFFFF}
+.cta-btn svg{flex:none;width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width: 760px){.cta{grid-template-columns:1fr;padding:1.75rem;gap:1.5rem}}
+.cta{grid-template-columns:1fr;justify-items:center;text-align:center;gap:1.75rem;padding:3rem 2rem;background:var(--ink)}
+.contact .cta p{margin:0 auto;max-width:60ch}
+.cta-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:.75rem}
+.cta-btn{min-height:46px;padding:.7rem 1.2rem;border-radius:999px}
+@media (max-width: 760px){.cta{padding:2rem 1.25rem}.cta-actions{flex-direction:column;align-items:stretch;width:100%}.cta-btn{justify-content:center}}
+@media print{
+  #stars,.top,.to-top-wrap,.shooting-star,.twinkle,.orbit-wrap,.constellation,.tablist,.lightbox,.sparkle-dot,.actions,.video-card{display:none!important}
+  body{background:#FFFFFF!important}
+  .panel[hidden]{display:block!important}
+  .panel{margin-bottom:1.5rem;break-inside:avoid-page}
+  .anim .reveal{opacity:1!important;transform:none!important}
+  .hud,.panel,.mission,.telemetry{box-shadow:none!important}
+  .cta{background:#FFFFFF!important;color:#16224D!important;border:1px solid #CCCCCC}
+  .cta h2,.contact .cta p,.cta-btn{color:#16224D!important}
+}
+
+/* v13 about + contact cleanup */
+#about .ablock-offduty .hobby-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem;margin-top:1rem;max-width:none}
+#about .ablock-offduty .hobby-list li{padding:.65rem .85rem}
+#about .ablock-offduty p{margin:0}
+.cta{background:none!important;color:var(--ink);padding:1rem 0 0;gap:1.5rem;border-radius:0}
+.cta h2{color:var(--ink);margin:0}
+.cta-btn{color:var(--ink);border:1.5px solid var(--ink);background:transparent}
+.cta-btn:hover{background:var(--ink);color:#FFFFFF;border-color:var(--ink)}
+.cta-btn.primary{background:var(--ink);color:#FFFFFF;border-color:var(--ink)}
+.cta-btn.primary:hover{background:var(--gold);border-color:var(--gold);color:#FFFFFF}
+
+/* v14 contact */
+.contact-card{padding:2.75rem 2.5rem;text-align:center}
+.contact-card h2{margin:0 0 1.75rem}
+.contact-tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}
+.ctile{display:flex;flex-direction:column;align-items:center;gap:.45rem;padding:1.6rem 1rem;border:1px solid var(--rule);border-radius:16px;background:var(--ground);color:var(--ink);text-decoration:none;transition:transform .25s,border-color .25s,box-shadow .25s}
+.ctile:hover{transform:translateY(-4px);border-color:var(--gold);box-shadow:0 12px 28px rgba(199,51,111,.14)}
+.ctile-icon{display:grid;place-items:center;width:50px;height:50px;border-radius:50%;background:var(--ink);margin-bottom:.35rem}
+.ctile-icon svg{width:22px;height:22px;fill:none;stroke:#F5A3C5;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.ctile-label{font-size:.8rem;font-weight:600;color:var(--muted)}
+.ctile-value{font-weight:700;overflow-wrap:anywhere}
+@media (max-width: 760px){.contact-card{padding:2rem 1.25rem}.contact-tiles{grid-template-columns:1fr}}
+@media (prefers-reduced-motion: reduce){.ctile,.ctile:hover{transition:none;transform:none}}
+
+/* v15 visual polish */
+.section-head h2::after{content:"";display:block;width:56px;height:4px;border-radius:2px;margin-top:.8rem;background:linear-gradient(90deg,var(--gold),#F5A3C5)}
+.mission .goal{max-width:34ch}
+.log-wrap{background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:2rem 2.25rem}
+.cols{gap:1.75rem}
+.cols > div{background:var(--surface);border:1px solid var(--rule);border-radius:20px;padding:1.75rem 2rem}
+.cols > div > ul > li:last-child{border-bottom:0;padding-bottom:0}
+.skill-group:last-child{border-bottom:0;padding-bottom:0}
+.cols .tags li{background:var(--ground)}
+.cols h3{font-size:1.25rem;margin-bottom:1rem}
+@media (max-width: 760px){.log-wrap,.cols > div{padding:1.4rem 1.25rem}}
+.cols > div > ul > li{font-weight:600}
+.cols > div > ul > li > span{font-weight:400;margin-top:.15rem}
+
+/* v16 unique elements */
+.more-list li.with-photo{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);column-gap:2.25rem;align-items:start}
+.more-list li.with-photo{grid-template-rows:auto auto auto 1fr}
+.more-list li.with-photo > :not(figure){grid-column:1}
+.more-list li.with-photo > figure{grid-column:2;grid-row:1 / span 4;margin:0;max-width:none}
+@media (max-width: 760px){.more-list li.with-photo{grid-template-columns:1fr}.more-list li.with-photo > figure{grid-column:1;grid-row:auto;margin-top:1rem}}
+.panel .zoom{border:2px solid #F3C4D7}
+.panel-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:1.1rem;align-items:start}
+.panel-head > :not(.ph-icon){grid-column:2}
+.ph-icon{grid-column:1;grid-row:1 / span 3;display:grid;place-items:center;width:54px;height:54px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 5px var(--glow)}
+.ph-icon svg{width:26px;height:26px;fill:none;stroke:#F5A3C5;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width: 640px){.ph-icon{width:44px;height:44px}.ph-icon svg{width:22px;height:22px}}
+.progress{position:absolute;left:calc(50% - 50vw);right:calc(50% - 50vw);bottom:-1px;height:3px;pointer-events:none}
+.progress span{display:block;height:100%;background:linear-gradient(90deg,#F5A3C5,var(--gold));transform:scaleX(0);transform-origin:left center}
+
+.ablock-origin{display:flow-root}
+.origin-photo{float:right;width:40%;margin:.2rem 0 .6rem 1.25rem}
+.origin-photo .zoom{border:2px solid #F3C4D7}
+.origin-photo figcaption{font-size:.78rem;line-height:1.35;margin-top:.45rem}
+@media (max-width: 420px){.origin-photo{width:46%}}
+
+.facts .fact-wide{grid-column:1 / -1}
+
+.t-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#F5A3C5;margin-right:.45rem;vertical-align:.05em;animation:tping 2.2s ease-out infinite}
+@keyframes tping{0%{box-shadow:0 0 0 0 rgba(245,163,197,.7)}70%{box-shadow:0 0 0 7px rgba(245,163,197,0)}100%{box-shadow:0 0 0 0 rgba(245,163,197,0)}}
+.t-link{display:block;color:inherit;text-decoration:none;border-radius:8px}
+.t-link:hover .t-value{text-decoration:underline;text-decoration-color:#F5A3C5;text-decoration-thickness:2px;text-underline-offset:4px}
+.t-link:focus-visible{outline:2px solid #F5A3C5;outline-offset:4px}
+@media (prefers-reduced-motion: reduce){.t-dot{animation:none}}
+.more-list .li-card{max-width:28rem;margin-top:1rem}
+.verify{display:inline-flex;align-items:center;gap:.35rem;margin-top:.4rem;font-size:.86rem;font-weight:700;color:var(--gold);text-decoration:none}
+.verify:hover{text-decoration:underline;text-underline-offset:3px}
+.verify svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+
+.more-list li.with-card{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-rows:auto auto 1fr;column-gap:2.25rem;align-items:start}
+.more-list li.with-card > :not(.li-card){grid-column:1}
+.more-list li.with-card > .li-card{grid-column:2;grid-row:1 / span 3;align-self:center;margin-top:0;max-width:none}
+@media (max-width: 760px){.more-list li.with-card{grid-template-columns:1fr}.more-list li.with-card > .li-card{grid-column:1;grid-row:auto;margin-top:1rem}}
+
+/* lighter link cards */
+.video-card{width:fit-content;max-width:100%;gap:.75rem;padding:.55rem 1.1rem .55rem .55rem;border-radius:999px;background:var(--surface-2);color:var(--ink);border:1px solid var(--rule);box-shadow:none}
+.video-card:hover{background:#FFFFFF;border-color:var(--gold);box-shadow:none}
+.video-card .play{width:34px;height:34px;background:var(--ink)}
+.video-card .play svg{width:15px;height:15px}
+.video-card strong{font-size:.95rem;line-height:1.25}
+.video-card .sub{font-size:.8rem;color:var(--muted);opacity:1}
+.more-list .li-card{max-width:100%;margin-top:.9rem}
+
+/* final polish */
+.gallery{grid-template-columns:repeat(auto-fit,minmax(13rem,1fr))}
+@media (max-width: 640px){
+  .hero .orbit-wrap{max-width:15rem;margin:0 auto}
+  .telemetry{grid-template-columns:1fr;row-gap:0;padding:.6rem 1.1rem}
+  .telemetry>div{border-left:0!important;padding:.65rem 0;border-top:1px solid rgba(255,255,255,.14)}
+  .telemetry>div:first-child{border-top:0}
+}
+@media (prefers-reduced-motion: reduce){.rotator{display:inline;min-width:0;border-bottom:0;text-decoration:underline;text-decoration-color:var(--rule-strong);text-decoration-thickness:3px;text-underline-offset:6px}}
+
+.device-gallery{display:block}
+.device-gallery h4{margin:0 0 1rem}
+.device-row{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(0,1fr);gap:1.25rem;align-items:start}
+.device-row .zoom{background:#FFFFFF}
+.device-row .zoom img{border-radius:10px}
+@media (max-width: 760px){.device-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<canvas id="stars" aria-hidden="true"></canvas>
+<div class="page">
+<div class="wrap">
+
+<header class="top">
+  <a class="mark" href="#top">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="12" rx="11" ry="4" fill="none" stroke="var(--gold)" stroke-width="1.6" transform="rotate(-20 12 12)"/></svg>
+    Victoria Delgado
+  </a>
+  <nav aria-label="Main">
+    <a href="#about">About</a>
+    <a href="#experience">Experience</a>
+    <a href="#work">Projects</a>
+    <a href="#publications">Publications</a>
+    <a href="#contact">Contact</a>
+    <a class="nav-resume" href="https://drive.google.com/file/d/1iXEPLHe_oL4jRy3bic2SmaUZ3-6gvWND/view?usp=sharing" target="_blank" rel="noopener">Résumé</a>
+  </nav>
+  <span class="progress" aria-hidden="true"><span id="progressbar"></span></span>
+</header>
+
+<main id="top">
+
+<div class="hero">
+  <span class="shooting-star" aria-hidden="true"></span>
+  <span class="twinkle" style="left:4%;top:16%;animation-delay:0s" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg></span>
+  <span class="twinkle" style="left:47%;top:6%;animation-delay:.8s" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg></span>
+  <span class="twinkle" style="left:56%;top:70%;animation-delay:1.6s;width:10px;height:10px" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg></span>
+  <span class="twinkle" style="left:95%;top:24%;animation-delay:2.2s" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg></span>
+  <span class="twinkle" style="left:84%;top:86%;animation-delay:1.1s;width:11px;height:11px" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg></span>
+  <span class="twinkle" style="left:68%;top:12%;animation-delay:2.8s;width:9px;height:9px" aria-hidden="true"><svg viewBox="0 0 20 20"><path d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg></span>
+  <div>
+    <h1 class="name"><span>Victoria</span><span>Delgado</span></h1>
+    <p class="lede"><span aria-hidden="true">I <span class="rotator"><span id="rot">design</span><span class="caret"></span></span> space hardware.</span><span class="sr-only">I design, simulate, build, and test space hardware.</span></p>
+    <ul class="creds" aria-label="Education">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 9l10-5 10 5-10 5z"/><path d="M6 11v5c3 2 9 2 12 0v-5"/></svg><span><small>Degree</small>B.S. Mechanical Engineering</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.5"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-20 12 12)"/></svg><span><small>Minor</small>Aerospace Engineering</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7-6-7-11a7 7 0 0 1 14 0c0 5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span><small>University</small>Lehigh University</span></li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg><span><small>Graduating</small>December 2027</span></li>
+    </ul>
+    <div class="actions">
+      <a class="btn primary" href="#work">View projects</a>
+      <a class="btn secondary" href="mailto:victoria103940@gmail.com">Contact me</a>
+      <a class="btn secondary" href="https://www.linkedin.com/in/victoriadelgadogutierrez/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn secondary" href="https://drive.google.com/file/d/1iXEPLHe_oL4jRy3bic2SmaUZ3-6gvWND/view?usp=sharing" target="_blank" rel="noopener">Résumé</a>
+    </div>
+  </div>
+  <div class="orbit-wrap">
+    <svg class="orbit" id="orbit" viewBox="0 0 480 420" role="img" aria-label="A small satellite circling a planet on a tilted orbit.">
+      <g transform="rotate(-18 240 210)">
+        <path class="path-back" d="M 30 210 A 210 66 0 0 1 450 210"/>
+      </g>
+      <circle class="planet" cx="240" cy="210" r="112"/>
+      <ellipse class="lat" cx="240" cy="210" rx="112" ry="34"/>
+      <ellipse class="lat" cx="240" cy="168" rx="98" ry="24"/>
+      <ellipse class="lat" cx="240" cy="252" rx="98" ry="24"/>
+      <ellipse class="lat" cx="240" cy="210" rx="44" ry="112"/>
+      <circle class="moon" cx="410" cy="70" r="16"/>
+      <g transform="rotate(-18 240 210)">
+        <path class="path-front" d="M 450 210 A 210 66 0 0 1 30 210"/>
+        <g>
+          <rect class="sat-panel" x="-20" y="-4" width="12" height="8" rx="1"/>
+          <rect class="sat-body" x="-7" y="-6" width="14" height="12" rx="2"/>
+          <rect class="sat-panel" x="8" y="-4" width="12" height="8" rx="1"/>
+          <animateMotion dur="14s" repeatCount="indefinite" path="M 450 210 A 210 66 0 0 1 30 210 A 210 66 0 0 1 450 210"/>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+
+<div class="telemetry" role="list" aria-label="Mission status">
+  <div role="listitem"><span class="t-label"><span class="t-dot" aria-hidden="true"></span>Launch Window</span><span class="t-value">Summer 2027</span></div>
+  <div role="listitem"><span class="t-label">Mission Clock</span><span class="t-value" id="tminus">Graduating December 2027</span></div>
+  <div role="listitem"><a class="t-link" href="#work"><span class="t-label">Currently Building</span><span class="t-value">End effector &amp; gripper, sEMG wearable</span></a></div>
+  <div role="listitem"><a class="t-link" href="#publications"><span class="t-label">Research Record</span><span class="t-value">3 labs, 2 manuscripts</span></a></div>
+</div>
+
+<section id="mission" aria-labelledby="mission-title">
+  <div class="mission">
+    <svg class="patch" viewBox="0 0 160 160" aria-hidden="true">
+      <defs>
+        <path id="patchTop" d="M 18 80 A 62 62 0 0 1 142 80"/>
+        <path id="patchBottom" d="M 13 80 A 67 67 0 0 0 147 80"/>
+      </defs>
+      <circle class="ring" cx="80" cy="80" r="76"/>
+      <circle class="inner" cx="80" cy="80" r="51"/>
+      <text class="band"><textPath href="#patchTop" startOffset="50%" text-anchor="middle">VICTORIA DELGADO</textPath></text>
+      <text class="band"><textPath href="#patchBottom" startOffset="50%" text-anchor="middle">LEHIGH 2027</textPath></text>
+      <path class="p-star" d="M 15 80 l 2 -5 l 2 5 l -2 5 z"/>
+      <path class="p-star" d="M 141 80 l 2 -5 l 2 5 l -2 5 z"/>
+      <circle class="p-planet" cx="80" cy="84" r="15"/>
+      <ellipse class="p-orbit" cx="80" cy="84" rx="33" ry="10" transform="rotate(-18 80 84)"/>
+      <path class="p-star" d="M 104 52 Q 104 59 111 59 Q 104 59 104 66 Q 104 59 97 59 Q 104 59 104 52 Z"/>
+    </svg>
+    <div>
+      <h2 id="mission-title">Career Goal</h2>
+      <p class="goal">Design, simulate, and test spacecraft systems at NASA Johnson Space Center.</p>
+      <ol class="flight">
+        <li><strong>Now</strong><span>B.S. Mechanical Engineering, Lehigh University</span></li>
+        <li><strong>Next</strong><span>Summer 2027 internship in mechanical design or spacecraft integration and test</span></li>
+        <li><strong>Then</strong><span>M.S. in Space Systems Engineering</span></li>
+        <li class="target"><strong>Goal</strong><span>Spacecraft systems engineer, NASA Johnson</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="constellation" aria-hidden="true"><svg viewBox="0 0 240 40"><polyline points="10,28 48,14 86,24 120,10 154,26 192,16 230,30"/><circle cx="10" cy="28" r="2"/><circle cx="48" cy="14" r="2.6"/><circle cx="86" cy="24" r="2"/><path class="spark" d="M120 2 Q120 10 128 10 Q120 10 120 18 Q120 10 112 10 Q120 10 120 2 Z"/><circle cx="154" cy="26" r="2.4"/><circle cx="192" cy="16" r="2"/><circle cx="230" cy="30" r="2.6"/></svg></div>
+<section id="about" aria-labelledby="about-title">
+  <div class="section-head">
+    <h2 id="about-title">About Me</h2>
+  </div>
+  <div class="dossier hud">
+    <div class="dossier-bar">
+      <span class="dossier-title">Crew File</span>
+      <span class="dossier-id"><span class="dot" aria-hidden="true"></span>Status: Active</span>
+    </div>
+    <div class="dossier-grid">
+      <div class="badge">
+        <div class="badge-head"><span class="badge-slot" aria-hidden="true"></span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="12" cy="12" rx="11" ry="4" fill="none" stroke="#F5A3C5" stroke-width="1.6" transform="rotate(-20 12 12)"/></svg></div>
+        <img class="badge-photo" src="images/portrait-of-victoria-delgado-54b451.jpg" alt="Portrait of Victoria Delgado.">
+        <p class="badge-name">Victoria Delgado</p>
+        <svg class="badge-code" viewBox="0 0 108 22" preserveAspectRatio="none" aria-hidden="true"><rect x="0" y="0" width="3" height="22"/><rect x="5" y="0" width="1" height="22"/><rect x="8" y="0" width="2" height="22"/><rect x="12" y="0" width="1" height="22"/><rect x="15" y="0" width="4" height="22"/><rect x="21" y="0" width="1" height="22"/><rect x="24" y="0" width="1" height="22"/><rect x="27" y="0" width="3" height="22"/><rect x="32" y="0" width="2" height="22"/><rect x="36" y="0" width="1" height="22"/><rect x="39" y="0" width="3" height="22"/><rect x="44" y="0" width="1" height="22"/><rect x="47" y="0" width="2" height="22"/><rect x="51" y="0" width="4" height="22"/><rect x="57" y="0" width="1" height="22"/><rect x="60" y="0" width="2" height="22"/><rect x="64" y="0" width="1" height="22"/><rect x="67" y="0" width="3" height="22"/><rect x="72" y="0" width="1" height="22"/><rect x="75" y="0" width="1" height="22"/><rect x="78" y="0" width="2" height="22"/><rect x="82" y="0" width="3" height="22"/><rect x="87" y="0" width="1" height="22"/><rect x="90" y="0" width="4" height="22"/><rect x="96" y="0" width="2" height="22"/><rect x="100" y="0" width="1" height="22"/><rect x="103" y="0" width="3" height="22"/></svg>
+        <p class="badge-id">VD-2027</p>
+      </div>
+      <figure class="ground-log">
+        <div class="log-frame">
+          <img loading="lazy" decoding="async" src="images/victoria-center-with-two-47c3fc.jpg" alt="Victoria, center, with two other students in Lehigh shirts and Rossin College lanyards at an open house.">
+          <span class="log-tag log-tl">Ground Log</span>
+        </div>
+        <figcaption>Center, as an Engineering Student Ambassador at a Rossin College open house.</figcaption>
+        <dl class="facts">
+          <div><dt>Hometown</dt><dd>Cedar Park, Texas</dd></div>
+          <div><dt>Languages</dt><dd>English and Spanish</dd></div>
+          <div class="fact-wide"><dt>Background</dt><dd>First-generation &amp; first engineer in my family</dd></div>
+        </dl>
+      </figure>
+    </div>
+  </div>
+  <div class="about-blocks">
+    <div class="ablock ablock-origin"><h3>Origin</h3><figure class="shot origin-photo"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/victoria-as-a-seventh-d325dd.jpg" alt="Victoria as a seventh grader in a pink backpack, exploring an interactive exhibit wall at the National Air and Space Museum."></button><figcaption>Seventh grade, at the National Air and Space Museum.</figcaption></figure><p>My interest in engineering started with small builds. As a kid, I assembled simple robots from magnets, batteries, and basic circuits, using translucent LEGO pieces to color their lights. A seventh-grade visit to the Smithsonian National Air and Space Museum gave that curiosity a direction. In the planetarium, I watched stars move across the dome. Outside, planes flew across the exhibit screens and hung just above my head. I left wanting to understand how we reach space and how I could help get us there.</p></div>
+    <div class="ablock"><h3>First Mission</h3><p>In 2022, I was selected for NASA’s Texas High School Aerospace Scholars program. Through its coursework, I studied how NASA technology moves into everyday products. As a manager in the Moonshot Experience, I researched radiation shielding for Gateway, part of the Artemis program. It was my first look at how spacecraft are designed to protect their crews, and it set my goal of working at Johnson Space Center.</p></div>
+    <div class="ablock ablock-offduty"><h3>Off Duty</h3>
+    <p>When I am not in the lab or the shop, I bake, read horror, collect vinyl records, and listen to jazz. My favorite horror novel is <cite>The Staircase in the Woods</cite> by Chuck Wendig. My favorite jazz artists are Sarah Vaughan and Laufey.</p>
+    <ul class="hobby-list">
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 12h12l-1.6 8H7.6z"/><path d="M5 12c0-3 3-5 7-5s7 2 7 5"/><path d="M12 7V4"/></svg>Baking</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h6a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H4z"/><path d="M20 5h-6a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h6z"/></svg>Horror Fiction</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="0.6"/></svg>Vinyl Records</li>
+      <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg>Jazz</li>
+    </ul></div>
+    <div class="ablock"><h3>How I Work</h3><p>I do my best work on projects I can take from concept to hardware. I design components in SolidWorks and Fusion 360, and I use Python and MATLAB to verify them before fabrication. Once a part is built, I test it against the design intent. When the results differ, I trace the cause and revise the design. I want to bring this approach to spacecraft components, mechatronics, and propulsion systems.</p></div>
+  </div>
+</section>
+
+<div class="constellation" aria-hidden="true"><svg viewBox="0 0 240 40"><polyline points="10,28 48,14 86,24 120,10 154,26 192,16 230,30"/><circle cx="10" cy="28" r="2"/><circle cx="48" cy="14" r="2.6"/><circle cx="86" cy="24" r="2"/><path class="spark" d="M120 2 Q120 10 128 10 Q120 10 120 18 Q120 10 112 10 Q120 10 120 2 Z"/><circle cx="154" cy="26" r="2.4"/><circle cx="192" cy="16" r="2"/><circle cx="230" cy="30" r="2.6"/></svg></div>
+<section id="experience" aria-labelledby="experience-title">
+  <div class="section-head">
+    <h2 id="experience-title">Education and Experience</h2>
+  </div>
+  <div class="edu-grid">
+    <div class="hud edu-card">
+      <h3>Lehigh University</h3>
+      <p class="where">P.C. Rossin College of Engineering and Applied Science, Bethlehem, Pennsylvania</p>
+      <dl>
+        <div><dt>Degree</dt><dd>B.S. Mechanical Engineering</dd></div>
+        <div><dt>Minor</dt><dd>Aerospace Engineering</dd></div>
+        <div><dt>Dates</dt><dd>August 2023 to December 2027</dd></div>
+        <div><dt>Relevant coursework</dt><dd>Fluid Mechanics, Thermodynamics, Strength of Materials, Control Systems, Engineering Vibrations, Numerical Methods</dd></div>
+        <div><dt>Certification</dt><dd>Certified SolidWorks Associate (CSWA), May 2026<br><a class="verify" href="https://www.credly.com/badges/f9a9d6a3-7713-4aff-aac9-57c9eb6782d4/public_url" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l2.4 1.8 3 .1.9 2.9 2.3 1.9-1 2.8 1 2.8-2.3 1.9-.9 2.9-3 .1L12 21l-2.4-1.8-3-.1-.9-2.9-2.3-1.9 1-2.8-1-2.8 2.3-1.9.9-2.9 3-.1z"/><path d="M8.5 12l2.4 2.4 4.6-4.8"/></svg>Verify on Credly</a></dd></div>
+      </dl>
+    </div>
+    <div class="log-wrap">
+      <h3>Flight Log</h3>
+      <ol class="log">
+        <li class="now"><span class="when">Sep 2026 to present</span><strong>End Effector Team Lead</strong><span class="org">Lehigh University Space Initiative</span></li>
+        <li class="now"><span class="when">Sep 2026 to present</span><strong>Design and Fabrication Fellow</strong><span class="org">Design Labs, Lehigh University</span></li>
+        <li><span class="when">Jun 2026 to Aug 2026</span><strong>Computational Fluid Dynamics Research Fellow</strong><span class="org">Multiphase and Environmental Turbulence Lab</span></li>
+        <li class="now"><span class="when">Dec 2025 to present</span><strong>Mechanical Engineer, AgriMed</strong><span class="org">Creative Inquiry and NeuroTech Devices, as a Global Social Impact Fellow. Clinical study in Almaty, May 2026.</span></li>
+        <li><span class="when">Aug 2025 to Sep 2026</span><strong>Wrist Engineer, Rover Robotic Arm</strong><span class="org">Lehigh University Space Initiative</span></li>
+        <li><span class="when">May 2025 to Aug 2025</span><strong>Engineering Undergraduate Research Fellow</strong><span class="org">Baltrusaitis Lab, Chemical and Biomolecular Engineering</span></li>
+        <li class="now"><span class="when">Mar 2025 to present</span><strong>Engineering Student Ambassador</strong><span class="org">P.C. Rossin College of Engineering and Applied Science</span></li>
+        <li><span class="when">Mar 2025 to May 2026</span><strong>Event Coordinator</strong><span class="org">Society of Women Engineers at Lehigh</span></li>
+        <li><span class="when">Jul 2022</span><strong>Manager, Moonshot Experience</strong><span class="org">NASA High School Aerospace Scholars</span></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="constellation" aria-hidden="true"><svg viewBox="0 0 240 40"><polyline points="10,28 48,14 86,24 120,10 154,26 192,16 230,30"/><circle cx="10" cy="28" r="2"/><circle cx="48" cy="14" r="2.6"/><circle cx="86" cy="24" r="2"/><path class="spark" d="M120 2 Q120 10 128 10 Q120 10 120 18 Q120 10 112 10 Q120 10 120 2 Z"/><circle cx="154" cy="26" r="2.4"/><circle cx="192" cy="16" r="2"/><circle cx="230" cy="30" r="2.6"/></svg></div>
+<section id="work" aria-labelledby="work-title">
+  <div class="section-head">
+    <h2 id="work-title">Projects</h2>
+  </div>
+
+  <div class="tablist" role="tablist" aria-label="Organizations">
+    <button class="tab" role="tab" id="tab-lusi" aria-controls="panel-lusi" aria-selected="true" data-key="lusi">LUSI</button>
+    <button class="tab" role="tab" id="tab-agrimed" aria-controls="panel-agrimed" aria-selected="false" tabindex="-1" data-key="agrimed">AgriMed</button>
+    <button class="tab" role="tab" id="tab-metlab" aria-controls="panel-metlab" aria-selected="false" tabindex="-1" data-key="metlab">MET Lab</button>
+    <button class="tab" role="tab" id="tab-baltrusaitis" aria-controls="panel-baltrusaitis" aria-selected="false" tabindex="-1" data-key="baltrusaitis">Baltrusaitis Lab</button>
+    <button class="tab" role="tab" id="tab-designlabs" aria-controls="panel-designlabs" aria-selected="false" tabindex="-1" data-key="designlabs">Design Labs</button>
+    <button class="tab" role="tab" id="tab-coursework" aria-controls="panel-coursework" aria-selected="false" tabindex="-1" data-key="coursework">Coursework</button>
+    <button class="tab" role="tab" id="tab-more" aria-controls="panel-more" aria-selected="false" tabindex="-1" data-key="more">Leadership</button>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-lusi" aria-labelledby="tab-lusi" tabindex="0">
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="18" r="2"/><path d="M6 16l3-7 6 2"/><path d="M15 11l3-4M18 7l2-1M18 7l1 2"/><path d="M3 21h8"/></svg></span>
+      <h3>Lehigh University Space Initiative</h3>
+      <p class="ph-role"><strong>End Effector Team Lead</strong><span class="ph-date">Sep 2026 to present</span></p>
+      <p class="ph-people">Rover Robotic Arm team. Previously Wrist Engineer, Aug 2025 to Sep 2026.</p>
+    </div>
+    <div class="panel-grid">
+      <div class="story">
+        <h4>Rover Robotic Arm and End Effector</h4>
+        <p class="lesson">When our rover came in over its weight and budget limits, I learned to treat weight as a design input from the first sketch.</p>
+        <p>LUSI is Lehigh’s student rover team, with more than 35 members across five subteams. The team competes in the University Rover Challenge at the Mars Desert Research Station in Utah, where the arm must lift 5 kg, open a latched drawer, insert a USB-C connector, and type on a keyboard.</p>
+        <p>As Wrist Engineer, I redesigned the wrist of our five-degree-of-freedom arm to cut weight and cost. I sized components against torque and weight limits and reduced the motor count by integrating linear actuators, while preserving the full range of motion. When shortened arm segments shifted the arm’s center of gravity, I worked with the other subteams on the fix and modeled the full arm assembly in SolidWorks to verify its range of motion.</p>
+        <p>The previous 3D-printed gripper used PETG gears that failed under load. I co-designed its replacement with the team: aluminum claws opened and closed by a linear actuator. As End Effector Team Lead, I now direct a team of four responsible for the gripper mechanics and for planning how the end effector completes each competition task, including typing. I delegate responsibilities, organize our design workflow, and train incoming members in SolidWorks and 3D printing through team workshops.</p>
+      </div>
+      <div class="side">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/aluminum-gripper-claws-mounted-821653.jpg" alt="Aluminum gripper claws mounted on a linear actuator with a ball screw, on a workbench."></button><figcaption>Aluminum gripper on its linear actuator.</figcaption></figure>
+        <a class="video-card" href="https://www.youtube.com/watch?v=Eyu1dI5hLIE" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 4.5v15l12-7.5z"/></svg></span>
+          <span><strong>Watch our 2026 System Acceptance Review video</strong><span class="sub">University Rover Challenge submission, filmed February 2026. Opens on YouTube.</span></span>
+        </a>
+        <dl>
+          <div><dt>Tools</dt><dd>SolidWorks, linear actuators, aluminum fabrication</dd></div>
+          <div><dt>Team</dt><dd>Leads a team of four</dd></div>
+          <div><dt>Key result</dt><dd>Lighter wrist with fewer motors and the full range of motion</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="gallery">
+      <h4>Rover and Gripper</h4>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/the-rover-chassis-with-132c88.jpg" alt="The rover chassis with four steerable wheels on a workbench."></button><figcaption>The 2026 rover with its four-wheel steering driveline.</figcaption></figure>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/close-view-of-the-c2f3d5.jpg" alt="Close view of the gripper claws in front of a keyboard."></button><figcaption>Gripper claws.</figcaption></figure>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/cad-model-of-the-ba568b.jpg" alt="CAD model of the gripper claw plates."></button><figcaption>CAD of the aluminum claw plates I co-designed.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-agrimed" aria-labelledby="tab-agrimed" tabindex="0" hidden>
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M2 12h4l2-5 3 10 3-8 2 3h6"/></svg></span>
+      <h3>AgriMed, Lehigh University</h3>
+      <p class="ph-role"><strong>Mechanical Engineer</strong><span class="ph-date">Dec 2025 to present</span></p>
+      <p class="ph-people">Dr. Dhruv Seshadri, Creative Inquiry, and NeuroTech Devices. Global Social Impact Fellow.</p>
+    </div>
+    <div class="panel-grid">
+      <div class="story">
+        <h4>Low-Cost sEMG Electrode for Dysphagia Screening</h4>
+        <p class="lesson">A low-cost sensor only matters if it works on real people. Running a clinical study taught me that.</p>
+        <p>Dysphagia, or difficulty swallowing, affects an estimated 590 million people worldwide. Our team developed a surface EMG electrode made from wheat starch hydrogel. It costs about $0.03 per unit to make, compared with about $0.45 for a common commercial electrode. I lead mechanical design on the four-person team building a low-cost wearable sEMG device for dysphagia screening.</p>
+        <p>I formulated the hydrogel and validated it through impedance testing. I designed the seven-layer electrode stack in SolidWorks and laser cut the copper tape, foam, and adhesive layers that hold it to the skin. I also wrote the Python pipeline that detects each swallow in the signal and calculates five metrics per swallow.</p>
+        <p>In May 2026, I traveled with the team to Almaty, Kazakhstan, to run the electrode study with a clinical partner, the first study in Kazakhstan to record swallowing-related muscle activity with sEMG. I ran 30 impedance tests with clinical users to compare our electrode against commercial electrodes. Our electrode recorded stronger signals than the commercial electrodes, with more variability, which we believe is partly due to the adhesive. The manuscript has been submitted to BMES.</p>
+        <p>I am now designing the first version of a wearable device: a compact pod worn under the chin, with a custom PCB, a rigid case, and a silicone shell. I am also designing the mold that will cast the shell, for CNC machining, and the device’s PCB in Fusion 360.</p>
+      </div>
+      <div class="side">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/exploded-cad-view-of-4beb76.jpg" alt="Exploded CAD view of the electrode's layered stack with two snap connectors."></button><figcaption>Exploded CAD of the electrode stack, modeled in SolidWorks.</figcaption></figure>
+        <a class="video-card" href="https://www.instagram.com/neurotech.lehigh/" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" style="fill:none;stroke:#FFFFFF;stroke-width:1.9;margin-left:0"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="#FFFFFF"/></svg></span>
+          <span><strong>Follow NeuroTech on Instagram</strong><span class="sub">Learn more about our AI in Medicine Workshop and fieldwork in Almaty.</span></span>
+        </a>
+        <a class="video-card" href="https://creativeinquiry.lehigh.edu/news/swello-team-advances-new-low-cost-design-dysphagia-monitoring-kazakhstan" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" style="fill:none;stroke:#FFFFFF;stroke-width:1.9;margin-left:0"><path d="M5 4h11v16H6a2 2 0 0 1-2-2V5a1 1 0 0 1 1-1z"/><path d="M16 8h3v10a2 2 0 0 1-2 2"/><path d="M8 8h5M8 12h5M8 16h3"/></svg></span>
+          <span><strong>Read the Creative Inquiry feature</strong><span class="sub">Lehigh coverage of our team’s fieldwork in Kazakhstan, July 2026.</span></span>
+        </a>
+        <dl>
+          <div><dt>Tools</dt><dd>SolidWorks, Python, laser cutting, Fusion 360</dd></div>
+          <div><dt>Key result</dt><dd>About $0.03 per electrode, compared with about $0.45 for a commercial electrode</dd></div>
+          <div><dt>Status</dt><dd>Manuscript submitted to BMES. Wearable device, mold, and PCB in design.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="gallery device-gallery">
+      <h4>Wearable Device Design</h4>
+      <div class="device-row">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/labeled-exploded-solidworks-view-c6abcf.jpg" alt="Labeled exploded SolidWorks view of the wearable sEMG device: silicone shell, two-part hard case, two batteries, carrier PCB, XIAO nRF52840 board, USB-C port, EMG chip, gold gel pads, gels, and adhesive sticker."></button><figcaption>Exploded view of the device I designed in SolidWorks, from the silicone shell down to the adhesive sticker.</figcaption></figure>
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/assembled-solidworks-view-of-97779d.jpg" alt="Assembled SolidWorks view of the compact wearable device with its USB-C port."></button><figcaption>The assembled device, with its USB-C charging port.</figcaption></figure>
+      </div>
+    </div>
+    <div class="gallery">
+      <h4>Testing and Team</h4>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/our-hydrogel-electrode-on-93606f.jpg" alt="Our hydrogel electrode on the side of a person's neck, with the recording sensor attached."></button><figcaption>Our electrode with the recording sensor during swallowing tests.</figcaption></figure>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/members-of-the-seshadri-6e743e.jpg" alt="Members of the Seshadri Laboratory posed on an outdoor staircase."></button><figcaption>The Seshadri Laboratory.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-metlab" aria-labelledby="tab-metlab" tabindex="0" hidden>
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="5" ry="2"/><path d="M12 9v11M8 16l4 4 4-4"/></svg></span>
+      <h3>Multiphase and Environmental Turbulence Lab</h3>
+      <p class="ph-role"><strong>Computational Fluid Dynamics Research Fellow</strong><span class="ph-date">Jun to Aug 2026</span></p>
+      <p class="ph-people">Musaddik Jaowad and Dr. Aditya Aiyer. STEM-SI program.</p>
+    </div>
+    <div class="panel-grid">
+      <div class="story">
+        <h4>Settling Dynamics of Disk-Shaped Particles</h4>
+        <p class="lesson">Microplastics in the ocean are mostly flat fragments and films, not spheres, so I modeled them as disks.</p>
+        <p>I wrote a Python simulation that tracks a disk-shaped particle through three flow fields: uniform flow, a deep-water wave, and a Taylor-Green vortex array. The particle’s velocity comes from the Maxey-Riley equation with drag and gravity terms, integrated with a fourth-order Runge-Kutta (RK4) scheme. The disk’s tilt angle evolves under Jeffery’s equation. I switched individual force terms on and off to isolate how each one affects the trajectory.</p>
+        <p>In uniform flow, the tilt angle stays fixed. Disks falling broadside and edgewise reached their theoretical terminal velocities, which I checked against hand calculations to validate the model. Orientation alone changed settling speed by 50%, and a disk tilted at 45° drifted sideways, which a sphere cannot do.</p>
+        <p>In the Taylor-Green vortex, velocity gradients rotated the disk through about four full turns during its descent, so no single orientation controlled its settling. Across Stokes numbers, the lowest-inertia particles (St = 0.03) were swept into downwelling regions and settled 6.2 times faster than in still fluid. By St = 0.3, that speedup faded and drag and gravity dominated.</p>
+        <p>I also built a MATLAB tool to plot the velocity field of each flow. The next steps are adding the added-mass force and fluid-inertia torque, then extending the model to turbulent flow.</p>
+      </div>
+      <div class="side">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/two-plots-disk-trajectories-35b855.jpg" alt="Two plots: disk trajectories for three orientations, and sinking speed over time leveling off at minus 0.4, minus 0.5, and minus 0.6."></button><figcaption>Uniform flow: tilt alone sets each disk’s speed and path.</figcaption></figure>
+        <a class="video-card" href="https://sites.google.com/view/aiyerlab/home" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" style="fill:none;stroke:#FFFFFF;stroke-width:1.9;margin-left:0"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 2.5 14.4 0 17M12 3.5c-2.5 2.6-2.5 14.4 0 17"/></svg></span>
+          <span><strong>Visit the MET Lab website</strong></span>
+        </a>
+        <dl>
+          <div><dt>Tools</dt><dd>Python, MATLAB, RK4 integration</dd></div>
+          <div><dt>Result</dt><dd>1st place, Engineering, Mechanics, and Biomaterials, Lehigh University Research Symposium. 75 posters, 200 presenters.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="gallery met-gallery">
+      <h4>At the Symposium</h4>
+      <div class="met-row met-photos">
+        <figure class="shot met-poster"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/the-research-poster-on-74dd77.jpg" alt="The research poster on an easel at the symposium, with a hand pointing to the governing equation."></button><figcaption>My poster at the Lehigh University Research Symposium.</figcaption></figure>
+        <figure class="shot met-group"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/victoria-with-a-group-174e3a.jpg" alt="Victoria with a group of fellow award winners in front of a Lehigh University backdrop."></button><figcaption>With fellow award winners at the Lehigh University Research Symposium, August 2026.</figcaption></figure>
+      </div>
+      <h4>Simulation Results</h4>
+      <div class="met-row met-plots">
+        <figure class="shot met-plot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/two-plots-a-sphere-3ebfe5.jpg" alt="Two plots: a sphere and a disk falling through a vortex array, and the disk's tilt angle over time."></button><figcaption>Taylor-Green vortex: the disk tumbles throughout its descent, so no single orientation governs its settling.</figcaption></figure>
+        <figure class="shot met-plot met-plot-narrow"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/two-flowfield-plots-uniform-0055f7.jpg" alt="Two flow-field plots: uniform flow and a Taylor-Green vortex, colored by velocity magnitude."></button><figcaption>The two flow fields used in the study: uniform flow and a Taylor-Green vortex.</figcaption></figure>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-baltrusaitis" aria-labelledby="tab-baltrusaitis" tabindex="0" hidden>
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7.5 15h9"/></svg></span>
+      <h3>Baltrusaitis Lab, Lehigh University</h3>
+      <p class="ph-role"><strong>Engineering Undergraduate Research Fellow</strong><span class="ph-date">May to Aug 2025</span></p>
+      <p class="ph-people">Allef Leite dos Santos and Dr. Jonas Baltrusaitis. Chemical and Biomolecular Engineering, STEM-SI program.</p>
+    </div>
+    <div class="panel-grid">
+      <div class="story">
+        <h4>Electrochemical CO₂ Reduction to Formic Acid</h4>
+        <p class="lesson">A catalyst’s surface decides a lot about what a reaction produces. My first research project showed me how much.</p>
+        <p>Electrochemical CO₂ reduction uses electricity to convert CO₂ into useful chemicals. This project targeted formic acid, which has uses in hydrogen storage and fuel cells.</p>
+        <p>We used cuprous oxide (Cu₂O) on copper as an affordable, tunable base catalyst. We then modified it with silver and with tin and compared formic acid production across the three electrodes.</p>
+        <p>I carried out the work at every stage: electrode synthesis, electrochemical testing, Raman spectroscopy, and SEM imaging. Across more than 30 electrochemical reactor experiments, I varied the operating conditions and improved formic acid selectivity by 60%. I used SEM and Raman spectroscopy to verify carbon phase transformations.</p>
+        <p>Formic acid production increased at more negative potentials and peaked at −1.4 V. The tin-modified electrode produced the most formic acid. Raman spectra confirmed that the copper oxides reduced during the reaction. SEM images showed that the tin-modified surface kept its wire-like structure, while unmodified Cu₂O collapsed.</p>
+        <p>I also worked on a cobalt catalyst project. I synthesized cobalt on nickel foam (2Co@NF), electrodeposited cobalt hydroxide, and oxidized it electrochemically to oxyhydroxide. Smooth cobalt substrates held the deposit poorly compared with rough nickel and did not oxidize fully, so I recommended roughening cobalt with sandpaper before deposition.</p>
+        <p>After the fellowship, Dr. Baltrusaitis recommended me to another faculty lab and invited me back to work on a new project in electrochemical wastewater separation.</p>
+      </div>
+      <div class="side">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/research-poster-titled-electrochemical-24d322.jpg" alt="Research poster titled Electrochemical CO2 Reduction to Formic Acid Using Cu2O-Modified Copper Electrodes."></button><figcaption>Research poster, 2025.</figcaption></figure>
+        <dl>
+          <div><dt>Methods</dt><dd>Electrode synthesis, electrochemical testing, Raman spectroscopy, SEM</dd></div>
+          <div><dt>Key result</dt><dd>60% improvement in formic acid selectivity</dd></div>
+          <div><dt>Status</dt><dd>Manuscript submitted to Electrochimica Acta</dd></div>
+        </dl>
+      </div>
+    </div>
+  <div class="gallery">
+      <h4>In the Lab</h4>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/a-small-electrochemical-cell-f231c3.jpg" alt="A small electrochemical cell with clipped electrodes and an orange solution on a lab bench."></button><figcaption>Electrodeposition cell for cobalt hydroxide.</figcaption></figure>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/electrochemical-oxidation-setup-with-801358.jpg" alt="Electrochemical oxidation setup with wired electrodes, reagent bottles, and sample tubes."></button><figcaption>Electrochemical oxidation setup.</figcaption></figure>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/a-labeled-centrifuge-tube-7f13e5.jpg" alt="A labeled centrifuge tube of orange solution marked 2Co@NF."></button><figcaption>Precursor solution for 2Co@NF synthesis.</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-designlabs" aria-labelledby="tab-designlabs" tabindex="0" hidden>
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></svg></span>
+      <h3>Design Labs, Wilbur Powerhouse</h3>
+      <p class="ph-role"><strong>Design and Fabrication Fellow</strong><span class="ph-date">Sep 2026 to present</span></p>
+      <p class="ph-people">Wilbur Powerhouse and Mountaintop Campus.</p>
+    </div>
+    <div class="panel-grid">
+      <div class="story">
+        <h4>Illuminated Sign and Display Enclosure</h4>
+        <p class="lesson">Most of my experience has been in CAD and analysis. This role is where I fabricate the parts I design.</p>
+        <p>I design and fabricate projects for the Design Labs using laser cutters, a fiber laser, CNC routers, sandblasters, and 3D printers.</p>
+        <p>My current project is a custom enclosure for a TV and monitor installation, sized to its exact dimensions. I modeled the 1/2 in. MDF side and top panels in Fusion 360 and SolidWorks for laser cutting and assembly.</p>
+        <p>The top panel holds a laser-cut Lehigh sign under acrylic, backlit by LED strips in a bent aluminum housing. I designed the housing as a sheet metal flat pattern for the laser cutter and refined it for fabrication by resizing the tab slots and sizing the mounting holes for #10 sheet metal screws.</p>
+      </div>
+      <div class="side">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/fusion-360-model-of-b8d1ed.jpg" alt="Fusion 360 model of a tall rectangular enclosure with a window cut into the top panel."></button><figcaption>Fusion 360 model of the enclosure, with the cutout for the sign.</figcaption></figure>
+        <dl>
+          <div><dt>Tools</dt><dd>Fusion 360, SolidWorks, laser and fiber laser cutting, CNC routing, sheet metal flat patterns</dd></div>
+          <div><dt>Status</dt><dd>In progress</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-coursework" aria-labelledby="tab-coursework" tabindex="0" hidden>
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 15v2"/></svg></span>
+      <h3>Lehigh Coursework</h3>
+      <p class="ph-role"><strong>Graphics for Engineering Design (ME010)</strong><span class="ph-date">Jan to May 2026</span></p>
+    </div>
+    <div class="panel-grid">
+      <div class="story">
+        <h4>Mortise Lock Reverse Engineering</h4>
+        <p class="lesson">A model is not finished until it moves like the real thing. This project taught me to check my CAD against the physical part at every step.</p>
+        <p>I disassembled a commercial mortise lock and measured each component with calipers. For features the calipers could not reach, I traced reference photos inside the sketches.</p>
+        <p>I modeled all ten components from scratch with fully defined sketches, including a torsion spring built from a helix and sweep and M4 threads cut without the Thread feature. The assembly reproduces the lock’s motion: rotating the cam drives the tongue and the latch bolt.</p>
+        <p>I also analyzed fit, clearance, material selection, and manufacturing method to evaluate how each affects the lock’s performance.</p>
+        <p>I printed every part on a single build plate in under three hours, for $2.29 of PLA. I iterated on dimensions until the printed lock operated with the original key and springs, and its parts are interchangeable with the original metal components. Faculty selected my model as the sole reference model out of 63 projects, to guide future CAD students.</p>
+      </div>
+      <div class="side">
+        <figure class="shot"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/exploded-solidworks-view-of-061f62.jpg" alt="Exploded SolidWorks view of the mortise lock, showing the housing, cover plate, cam, latch bolt, tongue, springs, and linkages."></button><figcaption>Exploded view of my SolidWorks assembly of the lock.</figcaption></figure>
+        <dl>
+          <div><dt>Tools</dt><dd>SolidWorks, calipers, Bambu Lab X1 Carbon</dd></div>
+          <div><dt>Result</dt><dd>Sole reference model selected from 63 projects</dd></div>
+        </dl>
+      </div>
+    </div>
+    <div class="gallery">
+      <h4>Printed Lock</h4>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/the-assembled-3d-printed-7a0703.jpg" alt="The assembled 3D printed mortise lock."></button><figcaption>The printed lock, assembled.</figcaption></figure>
+      <figure class="shot cover"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/printed-lock-housing-holding-36e509.jpg" alt="Printed lock housing holding a mix of printed and original metal parts."></button><figcaption>Printed and original metal parts in the same housing.</figcaption></figure>
+    </div>
+    <div class="gallery">
+      <h4>Models from CSWA Exam Preparation</h4>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/cad-model-of-a-57b398.jpg" alt="CAD model of a gearbox housing with input and output shafts."></button><figcaption>Gearbox</figcaption></figure>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/cad-assembly-of-a-758362.jpg" alt="CAD assembly of a scissor jack."></button><figcaption>Scissor jack</figcaption></figure>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/cad-assembly-of-a-57bc37.jpg" alt="CAD assembly of a three-jaw gear puller."></button><figcaption>Gear puller</figcaption></figure>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/cad-model-of-a-d5b961.jpg" alt="CAD model of a mounting bracket with two bosses."></button><figcaption>Bracket</figcaption></figure>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/exploded-cad-view-of-e270e0.jpg" alt="Exploded CAD view of a two-part mold assembly."></button><figcaption>Mold assembly</figcaption></figure>
+      <figure class="shot fit"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/cad-model-of-an-168dc2.jpg" alt="CAD model of an oval boat-shaped part with three domes."></button><figcaption>Banana boat that fits the mold plates</figcaption></figure>
+    </div>
+  </div>
+
+  <div class="panel" role="tabpanel" id="panel-more" aria-labelledby="tab-more" tabindex="0" hidden>
+    <div class="panel-head">
+      <span class="ph-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 21V4h11l-2 4 2 4H5"/></svg></span>
+      <h3>Leadership and Outreach</h3>
+    </div>
+    <ul class="more-list">
+      <li>
+        <strong>AI in Medicine Workshop, Almaty Management University</strong>
+        <span class="when">Lead organizer and facilitator, May 2026</span>
+        <p>Led an international workshop that brought together 40 clinicians, researchers, policymakers, and students. I coordinated with the panelists and the host university on setup, kept sessions on schedule during the event, and co-moderated the “AI for Health Equity” panel.</p>
+      </li>
+      <li class="with-photo">
+        <strong>Society of Women Engineers at Lehigh</strong>
+        <span class="when">Event Coordinator, March 2025 to May 2026</span>
+        <p>Planned and ran chapter events every two weeks for a chapter of more than 300 members, partnering with corporate sponsors to host career workshops. Organized a Metal Rose fabrication workshop with the Wilbur Powerhouse for more than 100 attendees.</p>
+        <a class="video-card li-card" href="https://www.instagram.com/lehigh_swe/" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" style="fill:none;stroke:#FFFFFF;stroke-width:1.9;margin-left:0"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="#FFFFFF"/></svg></span>
+          <span><strong>Follow SWE at Lehigh on Instagram</strong><span class="sub">Click to see our chapter events.</span></span>
+        </a>
+        <figure class="shot cover more-photo"><button class="zoom" type="button"><img loading="lazy" decoding="async" src="images/hands-holding-a-flower-fac8d4.jpg" alt="Hands holding a flower made from curved metal petals."></button><figcaption>From the Metal Rose fabrication workshop.</figcaption></figure>
+      </li>
+      <li>
+        <strong>P.C. Rossin College of Engineering and Applied Science</strong>
+        <span class="when">Engineering Student Ambassador, March 2025 to present</span>
+        <p>Selected by faculty to represent the college at admissions and recruitment events, including open houses and accepted-student events. Each week, I lead engineering-focused tours for groups of 10 to 25 prospective students and their families, taking them through the college’s buildings and labs and answering questions about majors, research, and campus life. I also help plan, set up, and run large prospective-student events, support student-body projects with the Dean’s office, and mentor current engineering students by connecting them with fellow engineers.</p>
+        <a class="video-card li-card" href="https://www.instagram.com/lehigh_rjf/" target="_blank" rel="noopener">
+          <span class="play" aria-hidden="true"><svg viewBox="0 0 24 24" style="fill:none;stroke:#FFFFFF;stroke-width:1.9;margin-left:0"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.8" cy="7.2" r=".6" fill="#FFFFFF"/></svg></span>
+          <span><strong>Follow the Engineering Ambassadors on Instagram</strong><span class="sub">Click to see what we do.</span></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<div class="constellation" aria-hidden="true"><svg viewBox="0 0 240 40"><polyline points="10,28 48,14 86,24 120,10 154,26 192,16 230,30"/><circle cx="10" cy="28" r="2"/><circle cx="48" cy="14" r="2.6"/><circle cx="86" cy="24" r="2"/><path class="spark" d="M120 2 Q120 10 128 10 Q120 10 120 18 Q120 10 112 10 Q120 10 120 2 Z"/><circle cx="154" cy="26" r="2.4"/><circle cx="192" cy="16" r="2"/><circle cx="230" cy="30" r="2.6"/></svg></div>
+<section id="publications" aria-labelledby="publications-title">
+  <div class="section-head">
+    <h2 id="publications-title">Publications and Presentations</h2>
+  </div>
+  <ul class="pubs">
+    <li class="hud">
+      <div><span class="kind">Manuscript</span><span class="status">Submitted to BMES, 2026</span></div>
+      <div>
+        <p class="title">Evaluating Sustainable Electrode System for Monitoring Neuromuscular Activity of Swallowing in Kazakhstan</p>
+        <p class="meta">Co-author, with the AgriMed team and Dr. Dhruv Seshadri.</p>
+      </div>
+    </li>
+    <li class="hud">
+      <div><span class="kind">Manuscript</span><span class="status">Submitted to Electrochimica Acta</span></div>
+      <div>
+        <p class="title">Cu₂O-Modified Copper Electrodes for Electrochemical CO₂ Reduction to Formic Acid (Working Title)</p>
+        <p class="meta">Co-author, with Allef Leite dos Santos and Dr. Jonas Baltrusaitis.</p>
+      </div>
+    </li>
+    <li class="hud">
+      <div><span class="kind">Poster</span><span class="status">1st place, 2026</span></div>
+      <div>
+        <p class="title">Which Forces Govern a Sinking Particle? Numerical Simulation of Inertial Particle Dynamics via the Maxey-Riley Equation</p>
+        <p class="meta">V. Delgado, M. Jaowad, A. Aiyer. Lehigh University Research Symposium, August 2026.</p>
+      </div>
+    </li>
+    <li class="hud">
+      <div><span class="kind">Poster</span><span class="status">2025</span></div>
+      <div>
+        <p class="title">Electrochemical CO₂ Reduction to Formic Acid Using Cu₂O-Modified Copper Electrodes</p>
+        <p class="meta">V. Delgado, A. Leite dos Santos, J. Baltrusaitis. Lehigh University STEM-SI program, summer 2025.</p>
+      </div>
+    </li>
+  </ul>
+</section>
+
+<div class="constellation" aria-hidden="true"><svg viewBox="0 0 240 40"><polyline points="10,28 48,14 86,24 120,10 154,26 192,16 230,30"/><circle cx="10" cy="28" r="2"/><circle cx="48" cy="14" r="2.6"/><circle cx="86" cy="24" r="2"/><path class="spark" d="M120 2 Q120 10 128 10 Q120 10 120 18 Q120 10 112 10 Q120 10 120 2 Z"/><circle cx="154" cy="26" r="2.4"/><circle cx="192" cy="16" r="2"/><circle cx="230" cy="30" r="2.6"/></svg></div>
+<section id="recognition" aria-labelledby="recognition-title">
+  <div class="section-head">
+    <h2 id="recognition-title">Recognition and Skills</h2>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Recognition</h3>
+      <ul>
+        <li>Lehigh University Future Makers Society<span>Inducted 2026. Recognizes Lehigh students with high-impact, externally validated achievements and connects members with faculty mentors and industry leaders.</span></li>
+        <li>1st place, Engineering, Mechanics, and Biomaterials<span>Lehigh University Research Symposium, August 2026. Among 75 posters and 200 graduate and undergraduate presenters.</span></li>
+        <li>RARE Scholar<span>One of 20 students selected in the Class of 2027. RARE is Lehigh’s four-year STEM immersion program that runs from admission to graduation, with research starting in the first semester, a community of scholars, and paid summer research.</span></li>
+        <li>STEM-SI Research Fellow<span>Lehigh’s 10-week, research-intensive summer program that pairs undergraduates with research-active faculty, alongside seminars and professional development. Supported my summer research in 2025 and 2026.</span></li>
+        <li>Global Social Impact Fellow<span>A Creative Inquiry program in which students tackle sustainable development challenges in low- and middle-income countries, through project work during the year and faculty-guided fieldwork abroad. My project is AgriMed in Kazakhstan.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h3>Technical Skills</h3>
+      <div class="skills">
+        <div class="skill-group"><h4>Design and Analysis</h4><ul class="tags"><li>SolidWorks</li><li>Fusion 360</li><li>GD&amp;T</li><li>Tolerance analysis</li><li>DFM</li><li>Mold design</li><li>PCB design</li><li>ANSYS <span>Beginner</span></li><li>LabVIEW <span>Beginner</span></li></ul></div>
+        <div class="skill-group"><h4>Programming</h4><ul class="tags"><li>Python</li><li>MATLAB</li><li>EMG signal processing</li><li>ODE simulation</li></ul></div>
+        <div class="skill-group"><h4>Test and Prototyping</h4><ul class="tags"><li>FDM 3D printing</li><li>Laser cutting</li><li>Impedance testing</li><li>Fiber laser cutting <span>Beginner</span></li><li>CNC milling <span>Beginner</span></li></ul></div>
+        <div class="skill-group"><h4>Laboratory</h4><ul class="tags"><li>Electrochemistry</li><li>Raman spectroscopy</li><li>SEM</li><li>Hydrogel formulation</li></ul></div>
+        <div class="skill-group"><h4>Languages</h4><ul class="tags"><li>English</li><li>Spanish</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="constellation" aria-hidden="true"><svg viewBox="0 0 240 40"><polyline points="10,28 48,14 86,24 120,10 154,26 192,16 230,30"/><circle cx="10" cy="28" r="2"/><circle cx="48" cy="14" r="2.6"/><circle cx="86" cy="24" r="2"/><path class="spark" d="M120 2 Q120 10 128 10 Q120 10 120 18 Q120 10 112 10 Q120 10 120 2 Z"/><circle cx="154" cy="26" r="2.4"/><circle cx="192" cy="16" r="2"/><circle cx="230" cy="30" r="2.6"/></svg></div>
+<section id="contact" class="contact" aria-labelledby="contact-title">
+  <div class="contact-card hud">
+    <h2 id="contact-title">Contact</h2>
+    <div class="contact-tiles">
+      <a class="ctile" href="mailto:victoria103940@gmail.com">
+        <span class="ctile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+        <span class="ctile-label">Email</span>
+        <span class="ctile-value">victoria103940@gmail.com</span>
+      </a>
+      <a class="ctile" href="https://www.linkedin.com/in/victoriadelgadogutierrez/" target="_blank" rel="noopener">
+        <span class="ctile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2 2 0 0 1 4 0v4M12 10v7"/></svg></span>
+        <span class="ctile-label">LinkedIn</span>
+        <span class="ctile-value">Victoria Delgado</span>
+      </a>
+      <a class="ctile" href="https://drive.google.com/file/d/1iXEPLHe_oL4jRy3bic2SmaUZ3-6gvWND/view?usp=sharing" target="_blank" rel="noopener">
+        <span class="ctile-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/></svg></span>
+        <span class="ctile-label">Résumé</span>
+        <span class="ctile-value">View or download</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer><span>© 2026 Victoria Delgado</span><span class="signoff"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="10" width="6" height="4" rx="1"/><rect x="9" y="8" width="6" height="8" rx="1.5"/><rect x="16" y="10" width="6" height="4" rx="1"/></svg>Thanks for visiting. Next stop: orbit.</span></footer>
+</div>
+</div>
+
+<div class="to-top-wrap"><a class="to-top" href="#top" aria-label="Back to top"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2c3 2.5 4.5 6 4.5 10.5L14 16h-4l-2.5-3.5C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M10 16l-1 5 3-2 3 2-1-5"/></svg></a></div>
+
+<dialog class="lightbox" id="lightbox" aria-label="Enlarged image">
+  <button class="close" type="button">Close</button>
+  <img src="" alt="">
+  <p></p>
+</dialog>
+<script>
+(function(){
+  /* Starfield */
+  var canvas = document.getElementById('stars');
+  var ctx = canvas.getContext('2d');
+  var seed = 7;
+  function rand(){ seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  function draw(){
+    var dpr = window.devicePixelRatio || 1;
+    var w = window.innerWidth, h = window.innerHeight;
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.setTransform(dpr,0,0,dpr,0,0);
+    ctx.clearRect(0,0,w,h);
+    var styles = getComputedStyle(document.documentElement);
+    var rgb = styles.getPropertyValue('--star').trim() || '255,255,255';
+    var alpha = parseFloat(styles.getPropertyValue('--star-alpha')) || .8;
+    var sparkle = styles.getPropertyValue('--sparkle').trim() || '#F5A3C5';
+    seed = 7;
+    var count = Math.round(w * h / 5200);
+    for (var i = 0; i < count; i++){
+      var x = rand() * w, y = rand() * h, r = rand();
+      var a = alpha * (0.25 + rand() * 0.75);
+      if (r > .985){
+        var s = 4 + rand() * 3;
+        ctx.globalAlpha = Math.min(1, a + .3);
+        ctx.fillStyle = sparkle;
+        ctx.beginPath();
+        ctx.moveTo(x, y - s); ctx.quadraticCurveTo(x, y, x + s, y);
+        ctx.quadraticCurveTo(x, y, x, y + s); ctx.quadraticCurveTo(x, y, x - s, y);
+        ctx.quadraticCurveTo(x, y, x, y - s); ctx.fill();
+        continue;
+      }
+      var size = r > .97 ? 1.6 : r > .85 ? 1.1 : .7;
+      ctx.globalAlpha = a;
+      ctx.fillStyle = 'rgb(' + rgb + ')';
+      ctx.beginPath(); ctx.arc(x, y, size, 0, Math.PI * 2); ctx.fill();
+    }
+    ctx.globalAlpha = 1;
+  }
+  draw();
+  var t;
+  window.addEventListener('resize', function(){ clearTimeout(t); t = setTimeout(draw, 150); });
+  try { window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', draw); } catch(e){}
+  try { new MutationObserver(draw).observe(document.documentElement, {attributes:true, attributeFilter:['data-theme']}); } catch(e){}
+
+  /* Reduced motion: stop the orbiting satellite */
+  try {
+    var orbit = document.getElementById('orbit');
+    var rm = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function applyMotion(){ if (rm.matches) { orbit.pauseAnimations(); orbit.setCurrentTime(3); } else { orbit.unpauseAnimations(); } }
+    applyMotion();
+    rm.addEventListener('change', applyMotion);
+  } catch(e){}
+
+  /* Tabs */
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+  function select(tab, focus){
+    tabs.forEach(function(t){
+      var on = t === tab;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) tab.focus();
+    tab.scrollIntoView({block:'nearest', inline:'nearest'});
+  }
+  tabs.forEach(function(tab, i){
+    tab.addEventListener('click', function(){ select(tab, false); });
+    tab.addEventListener('keydown', function(e){
+      var n = null;
+      if (e.key === 'ArrowRight') n = tabs[(i + 1) % tabs.length];
+      else if (e.key === 'ArrowLeft') n = tabs[(i - 1 + tabs.length) % tabs.length];
+      else if (e.key === 'Home') n = tabs[0];
+      else if (e.key === 'End') n = tabs[tabs.length - 1];
+      if (n){ e.preventDefault(); select(n, true); }
+    });
+  });
+  function fromHash(){
+    var key = (location.hash || '').replace('#','');
+    var match = tabs.filter(function(t){ return t.dataset.key === key; })[0];
+    if (match){
+      select(match, false);
+      document.getElementById('work').scrollIntoView();
+    }
+  }
+  fromHash();
+  window.addEventListener('hashchange', fromHash);
+
+  /* T-minus */
+  try {
+    var now = new Date();
+    var months = (2027 - now.getFullYear()) * 12 + (11 - now.getMonth());
+    var tm = document.getElementById('tminus');
+    if (tm && months > 0){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ tm.textContent = 'T-minus ' + months + ' months'; }
+      else { var n = 0; tm.textContent = 'T-minus 0 months'; var iv = setInterval(function(){ n++; tm.textContent = 'T-minus ' + n + ' months'; if (n >= months) clearInterval(iv); }, 70); }
+    }
+  } catch(e){}
+  /* Scroll reveals */
+  try {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window){
+      document.documentElement.classList.add('anim');
+      var targets = document.querySelectorAll('.section-head, .telemetry, .mission, .dossier, .ablock, #about .hobbies, .edu-card, .log-wrap, .pubs li, .cols > div, .contact-grid');
+      Array.prototype.forEach.call(targets, function(el){ el.classList.add('reveal'); });
+      var io = new IntersectionObserver(function(entries){
+        entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+      }, {threshold: 0.12, rootMargin: '0px 0px -40px 0px'});
+      Array.prototype.forEach.call(targets, function(el){ io.observe(el); });
+      Array.prototype.forEach.call(document.querySelectorAll('.constellation'), function(el){ io.observe(el); });
+    }
+  } catch(e){}
+  /* Back to top */
+  var topBtn = document.querySelector('.to-top');
+  var hdr = document.querySelector('.top');
+  function onScroll(){ if (topBtn) topBtn.classList.toggle('show', window.scrollY > 700); if (hdr) hdr.classList.toggle('scrolled', window.scrollY > 10); var pb = document.getElementById('progressbar'); if (pb){ var max = document.documentElement.scrollHeight - window.innerHeight; pb.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')'; } }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  /* Rotating role */
+  try {
+    var rot = document.getElementById('rot');
+    if (rot){
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches){ rot.textContent = 'design, simulate, and build'; }
+      else {
+        var words = ['design','simulate','build','test'], wi = 0, ci = words[0].length, deleting = false;
+        (function tick(){
+          var w = words[wi];
+          if (!deleting){
+            if (ci < w.length){ ci++; rot.textContent = w.slice(0, ci); setTimeout(tick, 90); }
+            else { deleting = true; setTimeout(tick, 1700); }
+          } else {
+            if (ci > 0){ ci--; rot.textContent = w.slice(0, ci); setTimeout(tick, 45); }
+            else { deleting = false; wi = (wi + 1) % words.length; setTimeout(tick, 250); }
+          }
+        })();
+      }
+    }
+  } catch(e){}
+
+  /* Sparkle trail */
+  try {
+    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && window.matchMedia('(pointer: fine)').matches){
+      var lastSpark = 0, sparkColors = ['#E0609A','#F5A3C5','#C7336F'];
+      window.addEventListener('pointermove', function(e){
+        if (e.pointerType && e.pointerType !== 'mouse') return;
+        var t = Date.now(); if (t - lastSpark < 45) return; lastSpark = t;
+        var s = document.createElement('span'); s.className = 'sparkle-dot'; s.setAttribute('aria-hidden','true');
+        var size = 6 + Math.random() * 6;
+        s.style.left = (e.clientX + 8) + 'px'; s.style.top = (e.clientY + 10) + 'px';
+        s.style.width = size + 'px'; s.style.height = size + 'px';
+        s.innerHTML = '<svg viewBox="0 0 20 20"><path fill="' + sparkColors[Math.floor(Math.random() * 3)] + '" d="M10 0Q10 10 20 10Q10 10 10 20Q10 10 0 10Q10 10 10 0Z"/></svg>';
+        document.body.appendChild(s);
+        setTimeout(function(){ s.remove(); }, 750);
+      }, {passive: true});
+    }
+  } catch(e){}
+
+  /* Lightbox */
+  var box = document.getElementById('lightbox');
+  var boxImg = box.querySelector('img');
+  var boxCap = box.querySelector('p');
+  Array.prototype.forEach.call(document.querySelectorAll('.zoom'), function(btn){
+    var img = btn.querySelector('img');
+    var cap = btn.parentNode.querySelector('figcaption');
+    btn.setAttribute('aria-label', 'Enlarge image: ' + img.alt);
+    btn.addEventListener('click', function(){
+      boxImg.src = img.src; boxImg.alt = img.alt;
+      boxCap.textContent = cap ? cap.textContent : '';
+      if (box.showModal) box.showModal(); else box.setAttribute('open','');
+    });
+  });
+  box.querySelector('.close').addEventListener('click', function(){ box.close(); });
+  box.addEventListener('click', function(e){ if (e.target === box) box.close(); });
+})();
+</script>
+</body>
+</html>
